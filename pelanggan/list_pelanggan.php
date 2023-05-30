@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="stylepelanggan.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>BINATO (FP)</title>
 </head>
 
@@ -41,8 +44,10 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Pelanggan</a></li>
-                    <li><a href="<?php echo "../pelanggan/add_pelanggan.php"; ?>">Tambah Data</a></li>
                     <li><a href="<?php echo "../pelanggan/list_pelanggan.php"; ?>">List Pelanggan </a></li>
+                    <li><a href="<?php echo "../pelanggan/add_pelanggan.php"; ?>">Tambah Pelanggan</a></li>
+                    <li><a href="<?php echo "../pelanggan/edit_pelanggan.php"; ?>">Edit Pelanggan</a></li>
+                    <li><a href="<?php echo "../pelanggan/hapus_pelanggan.php"; ?>">Hapus Pelanggan</a></li>
                 </ul>
             </li>
             <li>
@@ -55,8 +60,10 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Paket Laundry</a></li>
+                    <li><a href="<?php echo "../paketlaundry/list_paketlaundry.php "; ?>">List Paket Laundry</a></li>
                     <li><a href="<?php echo "../paketlaundry/add_paketlaundry.php "; ?>">Tambah Paket Laundry </a></li>
-                    <li><a href="<?php echo "../paketlaundry/paketlaundry.php "; ?>">List Paket Laundry</a></li>
+                    <li><a href="<?php echo "../paketlaundry/edit_paketlaundry.php "; ?>">Edit Paket Laundry </a></li>
+                    <li><a href="<?php echo "../paketlaundry/hapus_paketlaundry.php "; ?>">Hapus Paket Laundry </a></li>
                 </ul>
             </li>
             <li>
@@ -68,8 +75,10 @@
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
                     <li><a href="<?php echo "../karyawan/karyawan.php"; ?>">List Karyawan</a></li>
+                    <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
+                    <li><a href="<?php echo "../karyawan/edit_karyawan.php"; ?>">Edit Karyawan</a></li>
+                    <li><a href="<?php echo "../karyawan/hapus_karyawan.php"; ?>">Hapus Karyawan</a></li>
                 </ul>
             </li>
             <li>
@@ -82,11 +91,13 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="<?php echo "transupn.php"; ?>">Transaksi</a></li>
-                    <li><a href="<?php echo "../transaksi/add_transaksi.php"; ?>">Tambah Transaksi</a></li>
                     <li><a href="<?php echo "../transaksi/transaksi.php"; ?>">List Transaksi</a></li>
+                    <li><a href="<?php echo "../transaksi/add_transaksi.php"; ?>">Tambah Transaksi</a></li>
+                    <li><a href="<?php echo "../transaksi/edit_transaksi.php"; ?>">Edit Transaksi</a></li>
+                    <li><a href="<?php echo "../transaksi/hapus_transaksi.php"; ?>">Hapus Transaksi</a></li>
                 </ul>
             </li>
-            
+
         </ul>
     </div>
 
