@@ -1,3 +1,8 @@
+<?php
+include('../conn.php');
+include('../function.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +14,9 @@
     <link rel="stylesheet" href="stylepaketlaundry.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <title>BINATO (FP)</title>
 </head>
 
@@ -41,8 +49,10 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Pelanggan</a></li>
-                    <li><a href="<?php echo "../pelanggan/add_pelanggan.php"; ?>">Tambah Data</a></li>
                     <li><a href="<?php echo "../pelanggan/list_pelanggan.php"; ?>">List Pelanggan </a></li>
+                    <li><a href="<?php echo "../pelanggan/add_pelanggan.php"; ?>">Tambah Pelanggan</a></li>
+                    <li><a href="<?php echo "../pelanggan/edit_pelanggan.php"; ?>">Edit Pelanggan</a></li>
+                    <li><a href="<?php echo "../pelanggan/hapus_pelanggan.php"; ?>">Hapus Pelanggan</a></li>
                 </ul>
             </li>
             <li>
@@ -55,8 +65,10 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Paket Laundry</a></li>
-                    <li><a href="<?php echo "../paketlaundry/add_paketlaundry.php "; ?>">Tambah Paket Laundry </a></li>
-                    <li><a href="<?php echo "../paketlaundry/paketlaundry.php "; ?>">List Paket Laundry</a></li>
+                    <li><a href="<?php echo "../paketlaundry/list_paketlaundry.php"; ?>">List Paket Laundry</a></li>
+                    <li><a href="<?php echo "../paketlaundry/add_paketlaundry.php"; ?>">Tambah Paket Laundry</a></li>
+                    <li><a href="<?php echo "../paketlaundry/edit_paketlaundry.php"; ?>">Edit Paket Laundry</a></li>
+                    <li><a href="<?php echo "../paketlaundry/hapus_paketlaundry.php"; ?>">Hapus Paket Laundry</a></li>
                 </ul>
             </li>
             <li>
@@ -68,8 +80,10 @@
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
                     <li><a href="<?php echo "../karyawan/karyawan.php"; ?>">List Karyawan</a></li>
+                    <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
+                    <li><a href="<?php echo "../karyawan/edit_karyawan.php"; ?>">Edit Karyawan</a></li>
+                    <li><a href="<?php echo "../karyawan/hapus_karyawan.php"; ?>">Hapus Karyawan</a></li>
                 </ul>
             </li>
             <li>
@@ -82,11 +96,13 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="<?php echo "transupn.php"; ?>">Transaksi</a></li>
-                    <li><a href="<?php echo "../transaksi/add_transaksi.php"; ?>">Tambah Transaksi</a></li>
                     <li><a href="<?php echo "../transaksi/transaksi.php"; ?>">List Transaksi</a></li>
+                    <li><a href="<?php echo "../transaksi/add_transaksi.php"; ?>">Tambah Transaksi</a></li>
+                    <li><a href="<?php echo "../transaksi/edit_transaksi.php"; ?>">Edit Transaksi</a></li>
+                    <li><a href="<?php echo "../transaksi/hapus_transaksi.php"; ?>">Hapus Transaksi</a></li>
                 </ul>
             </li>
-            
+
         </ul>
     </div>
 
@@ -110,43 +126,64 @@
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Home</span>
-                </div>
-
-                <div class="boxes">
-                    <div class="box box1">
-                        <i class="uil uil-user"></i>
-                        <span class="text">Jumlah Pelanggan</span>
-                        <span class="number">27</span>
-                    </div>
-                    <div class="box box2">
-                        <i class="uil uil-comments"></i>
-                        <span class="text">Jumlah Paket Cuci</span>
-                        <span class="number">8</span>
-                    </div>
-                    <div class="box box3">
-                        <i class="uil uil-share"></i>
-                        <span class="text">Jumlah Karyawan</span>
-                        <span class="number">12</span>
-                    </div>
+                    <span class="text">List Paket Laundry</span>
                 </div>
             </div>
-
-            <div class="activity">
-                <div class="title">
-                    <i class="uil uil-clock-three"></i>
-                    <span class="text">Recent Transactions</span>
+            <div class="card-body">
+                <!-- START: Button -->
+                <div class="d-flex justify-content-start mb-4">
+                    <a href="../paketlaundry/add_paketlaundry.php" type="button" class="btn btn-sm btn-primary mr-3">
+                        <i class="fas fa-plus fa-sm text-white">
+                        </i> Tambah Data
+                    </a> <br>
+                    <a href="page/paket/laporanpaket.php" target="_blank" type="button" class="btn btn-sm btn-info mr-3"><i class="fas fa-download fa-sm text-white"></i> Cetak File</a>
                 </div>
+                <!-- END: Button -->
+                <table id="dataTables" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Id Paket</th>
+                            <th>Nama Paket</th>
+                            <th>Harga Per Kilo</th>
+                            <th>Deskripsi Paket</th>
+                            <th>action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        //proses menampilkan data dari database:
+                        //siapkan query SQL
+                        $query = "SELECT * FROM paket_cuci";
+                        //eksekusi query
+                        $result = $conn->query($query);
+                        $no = 1; ?>
 
-                <div class="activity-data">
-                    <!--isi-->
-                </div>
+                        <?php while ($data = $result->fetch(PDO::FETCH_ASSOC)) : ?>
+                            <tr>
+                                <td><?= $no++; ?></td>
+                                <td><?= $data['id_paket']; ?></td>
+                                <td><?= $data['paket']; ?></td>
+                                <td><?= $data['harga_kilo']; ?></td>
+                                <td><?= $data['deskripsi']; ?></td>
+                                <td>
+                                    <a href="<?php echo "updatepaket.php?id_paket=" . $data['id_paket']; ?>" class="btn btn-outline-warning btn-sm"> Update</a>
+                                    &nbsp;&nbsp;
+                                    <form method="POST" action="../paketlaundry/hapuspaket.php">
+                                        <input type="hidden" name="id_paket" value="<?php echo $data['id_paket']; ?>">
+                                        <button class="btn btn-outline-danger btn-sm" type="submit" name="deletes">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
 
     </section>
 
-    <!--<script src="script.js"></script>-->
+    <script src="script.js"></script>
     <script>
         const body = document.querySelector("body"),
             modeToggle = body.querySelector(".mode-toggle");
