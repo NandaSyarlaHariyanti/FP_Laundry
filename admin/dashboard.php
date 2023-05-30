@@ -17,7 +17,7 @@
 
         <div class="logo-details">
             <i class='bx bxs-washer'></i>
-            <span class="logo_name">Database</span>
+            <span class="logo_name">BINATO</span>
 
         </div>
 
