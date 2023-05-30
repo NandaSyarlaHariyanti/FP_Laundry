@@ -105,7 +105,7 @@ if (isset($_POST['submit'])) {
                     <label for="Catatan">Catatan</label>
                     <textarea type="text" maxlength="255" class="form-control" name="catatan" placeholder="Catatan" required></textarea>
                 </div>
-                <div>
+                <div class="center-button">
                     <button type="reset" class="btn btn-danger mr-2"><i class="fas fa-undo"></i> Reset</button>
                     <button type="submit" name="submit" class="btn btn-success"><i class="fas fa-save"></i> Save</button>
                 </div>
