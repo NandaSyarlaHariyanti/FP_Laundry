@@ -75,7 +75,7 @@ if (isset($_POST["submit"])) {
                 </div>
                 <div>
                     <label for="harga_kilo">Nama Paket</label>
-                    <input type="text" maxlength="30" class="form-control" name="nama_paket" id="nama_paket" placeholder="nama_paket" required> <br>
+                    <input type="text" maxlength="30" class="form-control" name="paket" id="paket" placeholder="Masukkan nama paket" required> <br>
                 </div>
                 <div>
                     <label for="deskripsi">Harga Per Kilo</label>
