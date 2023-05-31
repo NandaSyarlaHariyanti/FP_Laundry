@@ -126,20 +126,24 @@ include('../function.php');
                     <a href="../paketlaundry/add_paketlaundry.php" type="button" class="btn btn-sm btn-primary mr-3">
                         <i class="fas fa-plus fa-sm text-white">
                         </i> Tambah Data
-                    </a> <br>
-                    <a href="page/paket/laporanpaket.php" target="_blank" type="button" class="btn btn-sm btn-info mr-3"><i class="fas fa-download fa-sm text-white"></i> Cetak File</a>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a href="../paket/cetakpaket.php" target="_blank" type="button" class="btn btn-sm btn-info mr-3">
+                        <i class="fas fa-download fa-sm text-white">
+                        </i> Cetak File</a>
                 </div>
                 <!-- END: Button -->
                 <table id="dataTables" class="table table-hover">
                     <thead>
-                        <tr>
+                        <tr style="text-align: center;">
                             <th>No</th>
-                            <th>Id Paket</th>
+                            <th>ID Paket</th>
                             <th>Nama Paket</th>
                             <th>Harga Per Kilo</th>
                             <th>Deskripsi Paket</th>
-                            <th>action</th>
+                            <th>Action</th>
                         </tr>
+
                     </thead>
                     <tbody>
                         <?php
@@ -161,7 +165,7 @@ include('../function.php');
                                     <a href="<?php echo "updatepaket.php?id_paket=" . $data['id_paket']; ?>" class="btn btn-outline-warning btn-sm"> Update</a>
                                     &nbsp;&nbsp;
                                     <form method="POST" action="../paketlaundry/hapuspaket.php">
-                                        <input type="hidden" name="id_paket" value="<?php echo $data['id_paket']; ?>">
+                                        <input class="bx bxs-delete" type="hidden" name="id_paket" value="<?php echo $data['id_paket']; ?>">
                                         <button class="btn btn-outline-danger btn-sm" type="submit" name="deletes">Delete</button>
                                     </form>
                                 </td>
