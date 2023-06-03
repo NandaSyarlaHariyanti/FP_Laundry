@@ -83,44 +83,48 @@ INSERT INTO `paket_cuci` (`id_paket`, `paket`, `harga_kilo`, `deskripsi`) VALUES
 CREATE TABLE `pelanggan` (
   `id_pelanggan` varchar(10) NOT NULL,
   `nama_pelanggan` varchar(100) NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `password` varchar(5) NOT NULL,
   `alamat_pelanggan` varchar(255) NOT NULL,
   `no_hp_pelanggan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `no_hp_pelanggan`) VALUES
-('PLG001', 'Ahmad Kurniawan', 'Perlanaan', '080000000000'),
-('PLG002', 'Aiki Brilian', 'Perdagangan Pasar I', '080000001111'),
-('PLG003', 'Alviansyah', 'Tempel Jaya', '080000002222'),
-('PLG004', 'Anisha Catur Wulandari', 'Mangkai Baru Dusun III', '080000003333'),
-('PLG005', 'Anugrah Sang Putra', 'Toumoan', '080000004444'),
-('PLG009', 'Deby Ridho Marauli Nasution', 'Perdagangan ', '080000008888'),
-('PLG006', 'Ayu Andari', 'Mangkai Baru Dusun IV', '080000005555'),
-('PLG007', 'Bima Syahputra Purba', '-', '080000006666'),
-('PLG008', 'Chairil Anwar', '-', '080000007777'),
-('PLG010', 'Dina Ira Pandini Purba', '-', '080000009999'),
-('PLG011', 'Dinda Aristi', 'Kucingan', '080011110000'),
-('PLG012', 'Indah Irawati', '-', '080022220000'),
-('PLG013', 'Iqbal Nur Adabi Nasution', '-', '080033330000'),
-('PLG014', 'Ivan Pramana', '-', '080044440000'),
-('PLG015', 'Melin Agus Triyanti', 'Tempel Jaya', '080055550000'),
-('PLG016', 'Muhammad Hanafi', 'Perlanaan', '080066660000'),
-('PLG017', 'Muhammad Iqbal', '-', '080077770000'),
-('PLG018', 'Muhammad Rizky Yudistio', 'Mangkai Lama', '080088880000'),
-('PLG019', 'Muhammad Nanda Kurniawan', 'Perlanaan', '080099990000'),
-('PLG020', 'Rehan Firnanda', 'Mangkai Baru Dusun I', '080011111111'),
-('PLG021', 'Ridhana Fiska', 'Mayang', '080011112222'),
-('PLG022', 'Rizky Aidil', 'Mangkai Baru Dusun IV', '080011113333'),
-('PLG023', 'Siti Kharisma Fitriana', 'Mangkai Lama', '080011114444'),
-('PLG024', 'Sri Romadhona', 'Bukit Lima', '080011115555'),
-('PLG025', 'Sultan Nico Nur \'Arsy', 'Mangkai Lama', '080011116666'),
-('PLG026', 'Tri Ayuni', '-', '080011117777'),
-('PLG027', 'Wahyu Fitrah', 'Dosin', '080011118888'),
-('PLG028', 'Wendy Riswana', '-', '080011119999'),
-('PLG029', 'Widya Mailani', '-', '080022221111'),
-('PLG030', 'Wirandani Galih Kusuma', 'Perlanaaan', '080022222222'),
-('PLG031', 'Wisnu Falevi', '-', '080022223333');
+--
+-- Dumping data untuk tabel `pelanggan`
+--
 
+INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `username`, `password`, `alamat_pelanggan`, `no_hp_pelanggan`) VALUES
+('PLG001', 'Ahmad Kurniawan', 'ahmadkurniawan', '12345', 'Perlanaan', '080000000000'),
+('PLG002', 'Aiki Brilian', 'aikibrilian', '12345', 'Perdagangan Pasar I', '080000001111'),
+('PLG003', 'Alviansyah', 'alviansyah', '12345', 'Tempel Jaya', '080000002222'),
+('PLG004', 'Anisha Catur Wulandari', 'anishacatur', '12345', 'Mangkai Baru Dusun III', '080000003333'),
+('PLG005', 'Anugrah Sang Putra', 'anugrahsang', '12345', 'Toumoan', '080000004444'),
+('PLG006', 'Ayu Andari', 'ayuandari', '12345', 'Mangkai Baru Dusun IV', '080000005555'),
+('PLG007', 'Bima Syahputra Purba', 'bimasyahputra', '12345', '-', '080000006666'),
+('PLG008', 'Chairil Anwar', 'chairilanwar', '12345', '-', '080000007777'),
+('PLG009', 'Deby Ridho Marauli Nasution', 'debyridho', '12345', 'Perdagangan ', '080000008888'),
+('PLG010', 'Dina Ira Pandini Purba', 'dinaira', '12345', '-', '080000009999'),
+('PLG011', 'Dinda Aristi', 'dindaaristi', '12345', 'Kucingan', '080011110000'),
+('PLG012', 'Indah Irawati', 'indahirawati', '12345', '-', '080022220000'),
+('PLG013', 'Iqbal Nur Adabi Nasution', 'iqbalnur', '12345', '-', '080033330000'),
+('PLG014', 'Ivan Pramana', 'ivanpramana', '12345', '-', '080044440000'),
+('PLG015', 'Melin Agus Triyanti', 'melinagus', '12345', 'Tempel Jaya', '080055550000'),
+('PLG016', 'Muhammad Hanafi', 'muhammadhanafi', '12345', 'Perlanaan', '080066660000'),
+('PLG017', 'Muhammad Iqbal', 'muhammadiqbal', '12345', '-', '080077770000'),
+('PLG018', 'Muhammad Rizky Yudistio', 'muhammadrizky', '12345', 'Mangkai Lama', '080088880000'),
+('PLG019', 'Muhammad Nanda Kurniawan', 'muhammadnanda', '12345', 'Perlanaan', '080099990000'),
+('PLG020', 'Rehan Firnanda', 'rehanfirnanda', '12345', 'Mangkai Baru Dusun I', '080011111111'),
+('PLG021', 'Ridhana Fiska', 'ridhanafiska', '12345', 'Mayang', '080011112222'),
+('PLG022', 'Rizky Aidil', 'rizkyaidil', '12345', 'Mangkai Baru Dusun IV', '080011113333'),
+('PLG023', 'Siti Kharisma Fitriana', 'sitikharisma', '12345', 'Mangkai Lama', '080011114444'),
+('PLG024', 'Sri Romadhona', 'sriromadhona', '12345', 'Bukit Lima', '080011115555'),
+('PLG025', 'Sultan Nico Nur', 'Arsy', 'sultannico', '12345', 'Mangkai Lama', '080011116666'),
+('PLG026', 'Tri Ayuni', 'triayuni', '12345', '-', '080011117777'),
+('PLG027', 'Wahyu Fitrah', 'wahyufitrah', '12345', 'Dosin', '080011118888'),
+('PLG028', 'Wendy Riswana', 'wendyriswana', '12345', '-', '080011119999'),
+('PLG029', 'Widya Mailani', 'widyamailani', '12345', '-', '080022221111'),
+('PLG030', 'Wirandani Galih Kusuma', 'wirandanigalih', '12345', 'Perlanaaan', '080022222222'),
+('PLG031', 'Wisnu Falevi', 'wisnufalevi', '12345', '-', '080022223333');
 --
 -- Struktur dari tabel `transaksi`
 --
