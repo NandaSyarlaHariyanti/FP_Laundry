@@ -213,7 +213,7 @@ if (isset($_POST["submit"])) {
                         <button type="submit" name="submit" class="btn btn-save"><i class="fas fa-save"></i>Simpan Perubahan</button>
                     </div>
                     <div class="center-button">
-                    <a href="../kartawan/list_karyawan.php" class="btn btn-back">Kembali</a>
+                    <a href="../karyawan/list_karyawan.php" class="btn btn-back">Kembali</a>
                     </div>
 
                 </form>
