@@ -120,7 +120,7 @@ include('../function.php');
 
         <ul class="nav-links">
             <li>
-                <a href="<?php echo "../admin/dashboard.php"; ?>" class="active">
+                <a href="<?php echo "../admin/dashboard.php"; ?>">
                     <i class='bx bxs-home-smile'></i>
                     <span class="link_name">Home</span>
                 </a>
@@ -141,7 +141,7 @@ include('../function.php');
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href=" # " class="active">
                         <i class='bx bxs-t-shirt'></i>
                         <span class="link_name">Paket Laundry</span>
                     </a>
