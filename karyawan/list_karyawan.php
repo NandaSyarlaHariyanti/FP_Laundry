@@ -14,10 +14,99 @@ include('../function.php');
     <link rel="stylesheet" href="stylekaryawan.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
     <title>BINATO (FP)</title>
+    <style>
+        .card-body {
+            margin: 10px 10px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 4px;
+        }
+
+        .button-tambah {
+            background-color: #007bff;
+            border-radius: 5px;
+            color: #fff;
+            border: none;
+            padding: 0.5rem;
+            margin-right: 3px;
+            text-decoration: none;
+        }
+
+        .button-cetak {
+            background-color: #17a2b8;
+            border-radius: 5px;
+            color: #fff;
+            border: none;
+            padding: 0.5rem;
+            margin-right: 3px;
+            text-decoration: none;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            margin: 30px 40px;
+            width: 90%;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            max-width: auto;
+            text-align: center;
+        }
+
+        td.description {
+            max-width: 250px;
+            word-wrap: break-word;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #333;
+            margin-right: 5px;
+        }
+
+        .btn-edit {
+            background-color: transparent;
+            border-color: #ffc107;
+            color: #ffc107;
+        }
+
+        .btn-hapus {
+            background-color: transparent;
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .btn-edit:active,
+        .btn-edit:hover {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-hapus:active,
+        .btn-hapus:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,13 +120,10 @@ include('../function.php');
 
         <ul class="nav-links">
             <li>
-                <a href="<?php echo "dashboard.php"; ?>" class="active">
+                <a href="<?php echo "../admin/dashboard.php"; ?>" class="active">
                     <i class='bx bxs-home-smile'></i>
                     <span class="link_name">Home</span>
                 </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="<?php echo "../admin/dashboard.php"; ?>">Home</a></li>
-                </ul>
             </li>
             <li>
                 <div class="iocn-link">
@@ -76,7 +162,7 @@ include('../function.php');
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="<?php echo "../karyawan/list_karyawan.php"; ?>">List Karyawan</a></li>
+                    <li><a href="<?php echo "../karyawan/karyawan.php"; ?>">List Karyawan</a></li>
                     <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
                 </ul>
             </li>
@@ -113,6 +199,7 @@ include('../function.php');
             </div>
         </div>
 
+
         <div class="dash-content">
             <div class="overview">
                 <div class="title">
@@ -123,13 +210,13 @@ include('../function.php');
             <div class="card-body">
                 <!-- START: Button -->
                 <div class="d-flex justify-content-start mb-4">
-                    <a href="../karyawan/add_karyawan.php" type="button" class="btn btn-sm btn-primary mr-3">
-                        <i class="fas fa-plus fa-sm text-white">
+                    <a href="../karyawan/add_karyawan.php" type="button" class="button-tambah">
+                        <i class="fas fa-plus fa-sm">
                         </i> Tambah Data
                     </a>
                     &nbsp;&nbsp;
-                    <a href="../paket/cetakkaryawan.php" target="_blank" type="button" class="btn btn-sm btn-info mr-3">
-                        <i class="fas fa-download fa-sm text-white">
+                    <a href="../karyawan/cetakkaryawan.php" target="_blank" type="button" class="button-cetak">
+                        <i class="fas fa-download fa-sm">
                         </i> Cetak File</a>
                 </div>
                 <!-- END: Button -->
@@ -174,11 +261,11 @@ include('../function.php');
                                     <?php } ?></td>
                                 <td><?= $data['role']; ?></td>
                                 <td>
-                                    <a href="<?php echo "update_karyawan.php?id_karyawan=" . $data['id_karyawan']; ?>" class="btn btn-outline-warning btn-sm"> Update</a>
+                                    <a href="<?php echo "update_karyawan.php?id_karyawan=" . $data['id_karyawan']; ?>" class="btn btn-edit"> Update</a>
                                     &nbsp;&nbsp;
-                                    <form method="POST" action="../karyawan/hapuskaryawan.php">
-                                        <input class="bx bxs-delete" type="hidden" name="id_karyawan" value="<?php echo $data['id_karyawan']; ?>">
-                                        <button class="btn btn-outline-danger btn-sm" type="submit" name="deletes">Delete</button>
+                                    <form method="POST" action="../karyawan/hapuskaryawan.php" style="display: inline-block;>
+                                        <input class="btn btn-edit" type="hidden" name="id_karyawan" value="<?php echo $data['id_karyawan']; ?>">
+                                        <button class="btn btn-hapus" type="submit" name="deletes">Delete</button>
                                     </form>
                                 </td>
                             </tr>
@@ -191,43 +278,6 @@ include('../function.php');
     </section>
 
     <script src="script.js"></script>
-    <script>
-        const body = document.querySelector("body"),
-            modeToggle = body.querySelector(".mode-toggle");
-        sidebar = body.querySelector(".sidebar");
-        sidebarToggle = body.querySelector(".sidebar-toggle");
-
-        let arrow = document.querySelectorAll(".arrow");
-        for (var i = 0; i < arrow.length; i++) {
-            arrow[i].addEventListener("click", (e) => {
-                let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
-                arrowParent.classList.toggle("showMenu");
-            });
-        }
-
-        let getStatus = localStorage.getItem("status");
-        if (getStatus && getStatus === "close") {
-            sidebar.classList.toggle("close");
-        }
-
-        sidebarToggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-            if (sidebar.classList.contains("close")) {
-                localStorage.setItem("status", "close");
-            } else {
-                localStorage.setItem("status", "open");
-            }
-        })
-
-
-        sidebarToggle.onclick = function() {
-            sidebar.classList.toggle("active");
-            if (sidebar.classList.contains("active")) {
-                sidebarToggle.classList.replace("bx-menu", "bx-menu-alt-right");
-            } else
-                sidebarToggle.classList.replace("bx-menu-alt-right", "bx-menu");
-        }
-    </script>
 </body>
 
 </html>
