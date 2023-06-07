@@ -257,13 +257,13 @@ include('../function.php');
                                 <td><?php if ($data['image'] == "") { ?>
                                     <img src="https://via.placeholder.com/500x500.png?text=PAS+FOTO+SISWA" style="width:100px;height:100px;">
                                     <?php } else { ?>
-                                    <img src="image/<?php echo $data['image']; ?>" style= "max-height: 160px; max-width: 160px; object-fit: contain";>
+                                    <img src="image/<?php echo $data['image']; ?>" style= "max-height: 160px; max-width: 160px; object-fit: contain;">
                                     <?php } ?></td>
                                 <td><?= $data['role']; ?></td>
                                 <td>
                                     <a href="<?php echo "update_karyawan.php?id_karyawan=" . $data['id_karyawan']; ?>" class="btn btn-edit"> Update</a>
                                     &nbsp;&nbsp;
-                                    <form method="POST" action="../karyawan/hapuskaryawan.php" style="display: inline-block;>
+                                    <form method="POST" action="../karyawan/hapuskaryawan.php" style="display: inline-block;">
                                         <input class="btn btn-edit" type="hidden" name="id_karyawan" value="<?php echo $data['id_karyawan']; ?>">
                                         <button class="btn btn-hapus" type="submit" name="deletes">Delete</button>
                                     </form>
