@@ -32,14 +32,71 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
+        body {
+            background-image: url();
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100%;
+            margin: 20px;
+        }
+
+        .form-container {
+            width: 500px;
+            padding: 20px;
+            padding-left: 30px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin: 10px 30px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        .center-button {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .center-button button {
+            margin-right: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-save {
+            background-color: #28a745;
+        }
+
+        .btn-back {
+            background-color: #0056b3;
         }
     </style>
 
@@ -48,53 +105,34 @@ if (isset($_POST["submit"])) {
 
 <body>
     <div class="container">
-        <div class="card mt-6 mb-6">
-            <h5 class="card-header d-flex flex-row align-items-center justify-content-between">
-                <a>Edit Paket</a>
-                <a href="?page=Paket" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-chevron-left fa-sm fa-fw"></i>
-                </a>
-            </h5>
-
-            <div class="card-body">
-                <form method="post" action="">
-                    <div class="form-group row">
-                        <label for="id_paket" class="col-sm-2 col-form-label">Id Paket</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="id_paket" name="id_paket" value="<?= $data['id_paket'] ?? ''; ?>" required readonly>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="paket" class="col-sm-2 col-form-label">Nama Paket</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="paket" name="paket" value="<?= $data['paket']; ?>" maxlength="50" placeholder="Masukkan Nama Paket" required autofocus>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="harga_kilo" class="col-sm-2 col-form-label">Harga Per Kilo</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="harga_kilo" name="harga_kilo" min="1000" value="<?= $data['harga_kilo']; ?>" placeholder="Masukkan Harga Per Kilo" required>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi Paket</label>
-                        <div class="col-sm-10">
-                            <textarea type="text" class="form-control" id="deskripsi" name="deskripsi" maxlength="255" placeholder="Masukkan Deskripsi Paket" required><?= $data['deskripsi']; ?></textarea>
-                        </div>
-                    </div>
-                    <div class="card-footer text-center">
-                        <button type="reset" class="btn btn-danger mr-2"><i class="fas fa-undo"></i> Reset</button>
-                        <button type="submit" name="submit" class="btn btn-success"><i class="fas fa-save"></i> Save Change</button>
-                    </div>
-                </form>
-            </div>
+        <div class="form-container">
+            <h1>Update Data Paket Laundry</h1>
+            <form method="post" enctype="multipart/form-data">
+                <div>
+                    <label for="nama">ID Paket Laundry</label>
+                    <input type="text" maxlength="50" class="form-control" name="id_paket" id="id_paket" style="background-color: #ccc" value="<?= $data['id_paket'] ?? ''; ?>" required readonly>
+                </div>
+                <div>
+                    <label for="harga_kilo">Nama Paket</label>
+                    <input type="text" maxlength="30" class="form-control" name="paket" id="paket" value="<?= $data['paket']; ?>" required>
+                </div>
+                <div>
+                    <label for="deskripsi">Harga Per Kilo</label>
+                    <input type="text" maxlength="100" class="form-control" name="harga_kilo" id="harga_kilo" value="<?= $data['harga_kilo']; ?>" required>
+                </div>
+                <div>
+                    <label for="deskripsi">Deskripsi</label>
+                    <input type="text" maxlength="100" class="form-control" name="deskripsi" id="deskripsi" value="<?= $data['deskripsi']; ?>" required>
+                </div>
+                <div class="center-button">
+                    <button type="submit" name="submit" class="btn btn-save">Simpan Perubahan</button>
+                </div>
+                <div class="center-button">
+                    <a href="../paketlaundry/list_paketlaundry.php" class="btn btn-back">Kembali</a>
+                </div>
+            </form>
         </div>
-
     </div>
-    <!-- Popper and Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-
 </body>
 
 </html>
