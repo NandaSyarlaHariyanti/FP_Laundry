@@ -145,44 +145,8 @@
 
     </section>
 
-    <!--<script src="script.js"></script>-->
-    <script>
-        const body = document.querySelector("body"),
-            modeToggle = body.querySelector(".mode-toggle");
-        sidebar = body.querySelector(".sidebar");
-        sidebarToggle = body.querySelector(".sidebar-toggle");
-
-        let arrow = document.querySelectorAll(".arrow");
-        for (var i = 0; i < arrow.length; i++) {
-            arrow[i].addEventListener("click", (e) => {
-                let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
-                arrowParent.classList.toggle("showMenu");
-            });
-        }
-
-        let getStatus = localStorage.getItem("status");
-        if (getStatus && getStatus === "close") {
-            sidebar.classList.toggle("close");
-        }
-
-        sidebarToggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-            if (sidebar.classList.contains("close")) {
-                localStorage.setItem("status", "close");
-            } else {
-                localStorage.setItem("status", "open");
-            }
-        })
-
-
-        sidebarToggle.onclick = function() {
-            sidebar.classList.toggle("active");
-            if (sidebar.classList.contains("active")) {
-                sidebarToggle.classList.replace("bx-menu", "bx-menu-alt-right");
-            } else
-                sidebarToggle.classList.replace("bx-menu-alt-right", "bx-menu");
-        }
-    </script>
+    <script src="../script.js"></script>
+   
 </body>
 
 </html>
