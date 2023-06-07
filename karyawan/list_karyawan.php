@@ -261,7 +261,9 @@ include('../function.php');
                                     <?php } ?></td>
                                 <td><?= $data['role']; ?></td>
                                 <td>
-                                    <a href="<?php echo "update_karyawan.php?id_karyawan=" . $data['id_karyawan']; ?>" class="btn btn-edit"> Update</a>
+                                    <div>
+                                        <a href="<?php echo "update_karyawan.php?id_karyawan=" . $data['id_karyawan']; ?>" class="btn btn-edit"> Update</a>
+                                    </div>
                                     &nbsp;&nbsp;
                                     <form method="POST" action="../karyawan/hapuskaryawan.php" style="display: inline-block;">
                                         <input class="btn btn-edit" type="hidden" name="id_karyawan" value="<?php echo $data['id_karyawan']; ?>">
