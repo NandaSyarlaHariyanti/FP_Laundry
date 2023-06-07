@@ -10,6 +10,10 @@ if (isset($_POST['submit'])) {
     $image_name            = $_FILES['image']['name'];
     $image_size            = $_FILES['image']['size'];
     $role = "Karyawan";
+
+    $checkQuery = "SELECT * FROM karyawan WHERE id_karyawan = '$id'";
+    $checkResult = $conn->query($checkQuery);
+
     if ($image_size > 2097152) {
         header("location:add_karyawan.php?pesan=size");
       }else{
@@ -51,13 +55,19 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Open+Sans&family=Raleway:wght@800&display=swap" rel="stylesheet">
 
-    <title>Add Karyawan</title>
+    <title>Tambah Karyawan</title>
     <style>
         body {
+            background-image: url();
+            background-size: cover;
+            background-repeat: no-repeat;
             height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .container {
@@ -65,13 +75,29 @@ if (isset($_POST['submit'])) {
             justify-content: center;
             align-items: center;
             height: 100%;
+            margin: 20px;
         }
 
         .form-container {
-            width: 600px;
+            width: 500px;
             padding: 20px;
+            padding-left: 30px;
             background-color: #f8f9fa;
             border-radius: 10px;
+            margin: 10px 30px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            margin-bottom: 20px;
         }
 
         .center-button {
@@ -82,6 +108,28 @@ if (isset($_POST['submit'])) {
 
         .center-button button {
             margin-right: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-reset {
+            background-color: #c82333;
+        }
+
+        .btn-save {
+            background-color: #28a745;
+        }
+
+        .btn-back {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -120,21 +168,17 @@ if (isset($_POST['submit'])) {
                     <textarea type="text" maxlength="255" class="form-control" name="catatan" placeholder="Catatan" required></textarea>
                 </div>
                 <div class="center-button">
-                    <button type="reset" class="btn btn-danger mr-2"><i class="fas fa-undo"></i> Reset</button>
-                    <button type="submit" name="submit" class="btn btn-success"><i class="fas fa-save"></i> Save</button>
+                    <button type="reset" class="btn btn-reset">Hapus</button>
+                    <button type="submit" name="submit" class="btn btn-save">Simpan</button>
                 </div>
 
                 <div class="center-button"> 
-                    <a class="btn btn-secondary" href="list_karyawan.php"> Kembali </a>
+                    <a class="btn btn-back" href="list_karyawan.php"> Kembali </a>
                 </div>
 
             </form>
         </div>
     </div>
-
-    <!-- Popper and Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 </body>
 
