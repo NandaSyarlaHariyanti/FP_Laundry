@@ -213,7 +213,7 @@ include('../function.php');
                         <i class="fas fa-plus fa-sm"></i> Tambah Data
                     </a>
                     <span>&nbsp;&nbsp;</span>
-                    <a href="../paket/cetakpaket.php" target="_blank" class="button-cetak">
+                    <a href="../paketlaundry/cetakpaket.php" target="_blank" class="button-cetak">
                         <i class="fas fa-download fa-sm"></i> Cetak File
                     </a>
                 </div>
