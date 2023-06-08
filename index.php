@@ -14,7 +14,7 @@
         <p class="hallo2">BINATO'S LAUNDRY</p>
 
         <div class="btn-container">
-            <a href="../FP_Laundry-main/index2.php" class="my-button first-button">Login</a>
+            <a href="index2.php" class="my-button first-button">Login</a>
         </div>
     </div>
 </body>
