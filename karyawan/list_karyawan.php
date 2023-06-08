@@ -162,7 +162,7 @@ include('../function.php');
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="<?php echo "../karyawan/karyawan.php"; ?>">List Karyawan</a></li>
+                    <li><a href="<?php echo "../karyawan/list_karyawan.php"; ?>">List Karyawan</a></li>
                     <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
                 </ul>
             </li>
@@ -189,7 +189,7 @@ include('../function.php');
                 <i class='bx bx-menu sidebar-toggle'></i>
 
             </div>
-            <div class="search-box">
+           <div class="search-box">
                 <input type="text" placeholder="Search...">
                 <i class='bx bx-search'></i>
             </div>
