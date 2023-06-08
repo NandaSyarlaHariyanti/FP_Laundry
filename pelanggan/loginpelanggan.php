@@ -25,6 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     document.location.href = '../pelanggan/home.php';
                 </script> 
             ";
+            $query = "SELECT nama_pelanggan FROM pelanggan WHERE username = :username";
+            $statement = $conn->prepare($query);
+            $statement->bindParam(':username', $username);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $name = $result['nama_pelanggan'];
+
+        header("Location: ../pelanggan/pelanggan.php?name=" . urlencode($name));
             exit;
         } else {
             // Login gagal
