@@ -151,7 +151,8 @@
                             $result = $conn->query($query);
                             ?>
 
-                            <?php $no = 1; while ($data = $result->fetch(PDO::FETCH_ASSOC)) : ?>
+                            <?php $no = 1;
+                            while ($data = $result->fetch(PDO::FETCH_ASSOC)) : ?>
                                 <tr>
                                     <td style="text-align: center;"><?= $no++; ?></td>
                                     <td style="text-align: center;"><?= $data['id_transaksi']; ?></td>
@@ -163,26 +164,26 @@
                                     <td style="text-align: center;"><?= $data['bayar']; ?></td>
                                     <td style="text-align: center;"><?= $data['kembalian']; ?></td>
                                     <td style="text-align: center;">
-                                        <?php 
-                                            if ( $data['kembalian'] < 0 ) {
-                                                echo "<span class='keterangan-lunas'>Belum Lunas</span>";
-                                            } else {
-                                                echo "<span class='keterangan-belum-lunas'>Lunas</span>";
-                                            }
+                                        <?php
+                                        if ($data['kembalian'] < 0) {
+                                            echo "<span class='keterangan-lunas'>Belum Lunas</span>";
+                                        } else {
+                                            echo "<span class='keterangan-belum-lunas'>Lunas</span>";
+                                        }
                                         ?>
                                     </td>
                                     <td style="text-align: center;">
-                                    <div class="btn-group">
+                                        <div class="btn-group">
                                             <a href="<?php echo "../transaksi/updatetransaksi.php?id_transaksi=" . $data['id_transaksi']; ?>" class="btn btn-outline-warning btn-sm">
-                                                <i class="fas fa-edit"></i>
+                                                <i class="fas fa-edit"></i> Edit
                                             </a>
                                             <form method="POST" action="../transaksi/hapustransaksi.php" style="display: inline;">
                                                 <input class="bx bxs-delete" type="hidden" name="id_transaksi" value="<?php echo $data['id_transaksi']; ?>">
                                                 <button class="btn btn-outline-danger btn-sm" type="submit" name="deletes">
-                                                    <i class="fas fa-trash"></i>
+                                                    <i class="fas fa-trash"></i> Hapus
                                                 </button>
                                             </form>
-                                    </div>
+                                        </div>
                                     </td>
 
                                 </tr>
@@ -194,44 +195,7 @@
         </div>
     </section>
 
-    <!--<script src="script.js"></script>-->
-    <script>
-        const body = document.querySelector("body"),
-            modeToggle = body.querySelector(".mode-toggle");
-        sidebar = body.querySelector(".sidebar");
-        sidebarToggle = body.querySelector(".sidebar-toggle");
-
-        let arrow = document.querySelectorAll(".arrow");
-        for (var i = 0; i < arrow.length; i++) {
-            arrow[i].addEventListener("click", (e) => {
-                let arrowParent = e.target.parentElement.parentElement;
-                arrowParent.classList.toggle("showMenu");
-            });
-        }
-
-        let getStatus = localStorage.getItem("status");
-        if (getStatus && getStatus === "close") {
-            sidebar.classList.toggle("close");
-        }
-
-        sidebarToggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-            if (sidebar.classList.contains("close")) {
-                localStorage.setItem("status", "close");
-            } else {
-                localStorage.setItem("status", "open");
-            }
-        })
-
-
-        sidebarToggle.onclick = function() {
-            sidebar.classList.toggle("active");
-            if (sidebar.classList.contains("active")) {
-                sidebarToggle.classList.replace("bx-menu", "bx-menu-alt-right");
-            } else
-                sidebarToggle.classList.replace("bx-menu-alt-right", "bx-menu");
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
