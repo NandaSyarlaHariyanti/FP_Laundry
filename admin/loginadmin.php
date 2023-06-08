@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" id="username" name="username" placeholder="Username" required><br><br>
         <input type="password" id="password" name="password" placeholder="Password" required><br><br>
         <input type="submit" name="submit" value="Login">
-        <a href="../index.php" class="btn-back">Kembali</a>
+        <a href="../index2.php" class="btn-back">Kembali</a>
     </form>
 </body>
 
