@@ -251,10 +251,14 @@ include('../function.php');
                             <td><?php echo $data['harga_kilo']; ?></td>
                             <td class="description"><?php echo $data['deskripsi']; ?></td>
                             <td>
-                                <a href="updatepaket.php?id_paket=<?php echo $data['id_paket']; ?>" class="btn btn-edit">Edit</a>
+                                <a href="updatepaket.php?id_paket=<?php echo $data['id_paket']; ?>" class="btn btn-edit">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
                                 <form method="POST" action="../paketlaundry/hapuspaket.php" style="display: inline-block;">
                                     <input type="hidden" name="id_paket" value="<?php echo $data['id_paket']; ?>">
-                                    <button type="submit" name="deletes" class="btn btn-hapus">Hapus</button>
+                                    <button type="submit" name="deletes" class="btn btn-hapus">
+                                        <i class="fas fa-trash"></i> Hapus
+                                    </button>
                                 </form>
                             </td>
                         </tr>
