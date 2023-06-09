@@ -1,3 +1,7 @@
+<?php
+include('../conn.php');
+include('../function.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +13,101 @@
     <link rel="stylesheet" href="stylepelanggan.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="../binatoo.ico" type="image/x-icon">
     <title>BINATO (FP)</title>
+    <style>
+        .card-body {
+            margin: 10px 10px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 4px;
+        }
+
+        .button-tambah {
+            background-color: #007bff;
+            border-radius: 5px;
+            color: #fff;
+            border: none;
+            padding: 0.5rem;
+            margin-right: 3px;
+            text-decoration: none;
+        }
+
+        .button-cetak {
+            background-color: #17a2b8;
+            border-radius: 5px;
+            color: #fff;
+            border: none;
+            padding: 0.5rem;
+            margin-right: 3px;
+            text-decoration: none;
+        }
+
+
+        table {
+            border-collapse: collapse;
+            margin: 30px 40px;
+            width: 90%;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            max-width: auto;
+            text-align: center;
+        }
+
+        td.description {
+            max-width: 250px;
+            word-wrap: break-word;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #333;
+            margin-right: 5px;
+        }
+
+        .btn-edit {
+            background-color: transparent;
+            border-color: #ffc107;
+            color: #ffc107;
+        }
+
+        .btn-hapus {
+            background-color: transparent;
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .btn-edit:active,
+        .btn-edit:hover {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-hapus:active,
+        .btn-hapus:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,7 +121,7 @@
 
         <ul class="nav-links">
             <li>
-                <a href="<?php echo "dashboard.php"; ?>" class="active">
+                <a href="<?php echo "dashboard.php"; ?>" >
                     <i class='bx bxs-home-smile'></i>
                     <span class="link_name">Home</span>
                 </a>
@@ -36,7 +131,7 @@
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href=" # " class="active">
                         <i class='bx bxs-user'></i>
                         <span class="link_name">Pelanggan</span>
                     </a>
@@ -111,80 +206,81 @@
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Home</span>
-                </div>
-
-                <div class="boxes">
-                    <div class="box box1">
-                        <i class="uil uil-user"></i>
-                        <span class="text">Jumlah Pelanggan</span>
-                        <span class="number">27</span>
-                    </div>
-                    <div class="box box2">
-                        <i class="uil uil-comments"></i>
-                        <span class="text">Jumlah Paket Cuci</span>
-                        <span class="number">8</span>
-                    </div>
-                    <div class="box box3">
-                        <i class="uil uil-share"></i>
-                        <span class="text">Jumlah Karyawan</span>
-                        <span class="number">12</span>
-                    </div>
+                    <span class="text">List Pelanggan</span>
                 </div>
             </div>
-
-            <div class="activity">
-                <div class="title">
-                    <i class="uil uil-clock-three"></i>
-                    <span class="text">Recent Transactions</span>
+            <div class="card-body">
+                <!-- START: Button -->
+                <div class="button-group">
+                    <a href="../pelanggan/add_pelanggan.php" class="button-tambah">
+                        <i class="fas fa-plus fa-sm"></i> Tambah Data
+                    </a>
+                    <span>&nbsp;&nbsp;</span>
+                    <a href="../pelanggan/cetakPelanggan.php" target="_blank" class="button-cetak">
+                        <i class="fas fa-download fa-sm"></i> Cetak File
+                    </a>
                 </div>
 
-                <div class="activity-data">
-                    <!--isi-->
-                </div>
+                <!-- END: Button -->
             </div>
+
+            <!-- END: Button -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>ID Pelanggan</th>
+                        <th>Nama Pelanggan</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Alamat Pelanggan</th>
+                        <th>No. HP Pelanggan</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    //proses menampilkan data dari database:
+                    //siapkan query SQL
+                    $query = "SELECT * FROM pelanggan";
+                    //eksekusi query
+                    $result = $conn->query($query);
+                    $no = 1;
+                    while ($data = $result->fetch(PDO::FETCH_ASSOC)) :
+                    ?>
+                        <tr>
+                            <td><?php echo $no++; ?></td>
+                            <td><?php echo $data['id_pelanggan']; ?></td>
+                            <td><?php echo $data['nama_pelanggan']; ?></td>
+                            <td><?php echo $data['username']; ?></td>
+                            <td><?php echo $data['password']; ?></td>
+                            <td><?php echo $data['alamat_pelanggan']; ?></td>
+                            <td><?php echo $data['no_hp_pelanggan']; ?></td>
+                            <td>
+                                <a href="updatePelanggan.php?id_pelanggan=<?php echo $data['id_pelanggan']; ?>" class="btn btn-edit">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                            </td>
+                            <td>    
+                                <form method="POST" action="../pelanggan/hapusPelanggan.php" style="display: inline-block;">
+                                    <input type="hidden" name="id_pelanggan" value="<?php echo $data['id_pelanggan']; ?>">
+                                    <button type="submit" name="deletes" class="btn btn-hapus">
+                                        <i class="fas fa-trash"></i> Hapus
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+
+        </div>
         </div>
 
     </section>
 
     <!--<script src="script.js"></script>-->
-    <script>
-        const body = document.querySelector("body"),
-            modeToggle = body.querySelector(".mode-toggle");
-        sidebar = body.querySelector(".sidebar");
-        sidebarToggle = body.querySelector(".sidebar-toggle");
-
-        let arrow = document.querySelectorAll(".arrow");
-        for (var i = 0; i < arrow.length; i++) {
-            arrow[i].addEventListener("click", (e) => {
-                let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
-                arrowParent.classList.toggle("showMenu");
-            });
-        }
-
-        let getStatus = localStorage.getItem("status");
-        if (getStatus && getStatus === "close") {
-            sidebar.classList.toggle("close");
-        }
-
-        sidebarToggle.addEventListener("click", () => {
-            sidebar.classList.toggle("close");
-            if (sidebar.classList.contains("close")) {
-                localStorage.setItem("status", "close");
-            } else {
-                localStorage.setItem("status", "open");
-            }
-        })
-
-
-        sidebarToggle.onclick = function() {
-            sidebar.classList.toggle("active");
-            if (sidebar.classList.contains("active")) {
-                sidebarToggle.classList.replace("bx-menu", "bx-menu-alt-right");
-            } else
-                sidebarToggle.classList.replace("bx-menu-alt-right", "bx-menu");
-        }
-    </script>
+    <script src="../script.js"></script>
 </body>
 
 </html>

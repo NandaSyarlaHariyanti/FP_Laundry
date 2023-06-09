@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="icon" href="../binatoo.ico" type="image/x-icon">
   <title>Halaman dengan Dua Box</title>
   <link rel="stylesheet" href="stylepelanggan.css">
   <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
