@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styleadmin.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="../binatoo.ico" type="image/x-icon">
     <title>BINATO (FP)</title>
 </head>
 
