@@ -78,16 +78,16 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Open+Sans&family=Raleway:wght@800&display=swap" rel="stylesheet">
 
     <title>Tambah Karyawan</title>
     <style>
         body {
-            background-image: url();
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: 100vh;
+            height: 100%;
             font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
@@ -103,11 +103,12 @@ if (isset($_POST['submit'])) {
             padding: 20px;
             padding-left: 30px;
             background-color: #f8f9fa;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin: 10px 30px;
         }
 
-        h1 {
+        h2 {
             margin-bottom: 20px;
         }
 
@@ -138,6 +139,7 @@ if (isset($_POST['submit'])) {
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
+            font-size: 12px;
         }
 
         .btn-reset {
@@ -188,12 +190,11 @@ if (isset($_POST['submit'])) {
                     <textarea type="text" maxlength="255" class="form-control" name="catatan" placeholder="Catatan" required></textarea>
                 </div>
                 <div class="center-button">
-                    <button type="reset" class="btn btn-reset">Hapus</button>
-                    <button type="submit" name="submit" class="btn btn-save">Simpan</button>
+                    <button type="reset" class="btn btn-reset"><i class="fas fa-undo"></i> Hapus</button>
+                    <button type="submit" name="submit" class="btn btn-save"><i class="fas fa-save"></i> Simpan</button>
                 </div>
-
                 <div class="center-button">
-                    <a class="btn btn-back" href="list_karyawan.php"> Kembali </a>
+                    <a href="../karyawan/list_karyawan.php" class="btn btn-back"> <i class="fas fa-home"></i> Kembali</a>
                 </div>
 
             </form>
