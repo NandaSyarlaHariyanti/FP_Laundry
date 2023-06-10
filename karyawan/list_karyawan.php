@@ -14,6 +14,7 @@ include('../function.php');
     <link rel="stylesheet" href="stylekaryawan.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>BINATO (FP)</title>
     <style>
         .card-body {
@@ -120,7 +121,7 @@ include('../function.php');
 
         <ul class="nav-links">
             <li>
-                <a href="<?php echo "../admin/dashboard.php"; ?>" class="active">
+                <a href="<?php echo "../admin/dashboard.php"; ?>">
                     <i class='bx bxs-home-smile'></i>
                     <span class="link_name">Home</span>
                 </a>
@@ -155,7 +156,7 @@ include('../function.php');
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href=" # " class="active">
                         <i class='bx bxs-user-voice'></i>
                         <span class="link_name">Karyawan</span>
                     </a>
@@ -189,7 +190,7 @@ include('../function.php');
                 <i class='bx bx-menu sidebar-toggle'></i>
 
             </div>
-           <div class="search-box">
+            <div class="search-box">
                 <input type="text" placeholder="Search...">
                 <i class='bx bx-search'></i>
             </div>
@@ -255,19 +256,21 @@ include('../function.php');
                                 <td><?= $data['alamat']; ?></td>
                                 <td><?= $data['catatan']; ?></td>
                                 <td><?php if ($data['image'] == "") { ?>
-                                    <img src="https://via.placeholder.com/500x500.png?text=PAS+FOTO+SISWA" style="width:100px;height:100px;">
+                                        <img src="https://via.placeholder.com/500x500.png?text=PAS+FOTO+SISWA" style="width:100px;height:100px;">
                                     <?php } else { ?>
-                                    <img src="image/<?php echo $data['image']; ?>" style= "max-height: 160px; max-width: 160px; object-fit: contain;">
-                                    <?php } ?></td>
+                                        <img src="image/<?php echo $data['image']; ?>" style="max-height: 160px; max-width: 160px; object-fit: contain;">
+                                    <?php } ?>
+                                </td>
                                 <td><?= $data['role']; ?></td>
                                 <td>
-                                    <div>
-                                        <a href="<?php echo "update_karyawan.php?id_karyawan=" . $data['id_karyawan']; ?>" class="btn btn-edit"> Update</a>
-                                    </div>
-                                    &nbsp;&nbsp;
+                                    <a href="<?php echo "update_karyawan.php?id_karyawan=" . $data['id_karyawan']; ?>" class="btn btn-edit">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
                                     <form method="POST" action="../karyawan/hapuskaryawan.php" style="display: inline-block;">
-                                        <input class="btn btn-edit" type="hidden" name="id_karyawan" value="<?php echo $data['id_karyawan']; ?>">
-                                        <button class="btn btn-hapus" type="submit" name="deletes">Delete</button>
+                                        <input type="hidden" name="id_karyawan" value="<?php echo $data['id_karyawan']; ?>">
+                                        <button type="submit" name="deletes" class="btn btn-hapus">
+                                            <i class="fas fa-trash"></i> Hapus
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -279,7 +282,7 @@ include('../function.php');
 
     </section>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </body>
 
 </html>
