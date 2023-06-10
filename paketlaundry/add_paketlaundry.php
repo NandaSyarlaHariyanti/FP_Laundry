@@ -36,6 +36,7 @@ if (isset($_POST["submit"])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Open+Sans&family=Raleway:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Tambah Pelanggan</title>
     <style>
         body {
@@ -59,6 +60,7 @@ if (isset($_POST["submit"])) {
             padding: 20px;
             padding-left: 30px;
             background-color: #f8f9fa;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin: 10px 30px;
         }
@@ -94,6 +96,7 @@ if (isset($_POST["submit"])) {
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
+            font-size: 12px;
         }
 
         .btn-reset {
@@ -117,15 +120,15 @@ if (isset($_POST["submit"])) {
             <h1>Tambah Data Paket Laundry</h1>
             <form method="post" enctype="multipart/form-data">
                 <div>
-                    <label for="nama">ID Paket Laundry</label>
+                    <label for="id_paket">ID Paket Laundry</label>
                     <input type="text" maxlength="50" class="form-control" name="id_paket" id="id_paket" placeholder="masukkan id paket laundry" required>
                 </div>
                 <div>
-                    <label for="harga_kilo">Nama Paket</label>
-                    <input type="text" maxlength="30" class="form-control" name="paket" id="paket" placeholder="masukkan nama paket" required>
+                    <label for="paket">Nama Paket</label>
+                    <input type="text" maxlength="50" class="form-control" name="paket" id="paket" placeholder="masukkan nama paket" required>
                 </div>
                 <div>
-                    <label for="deskripsi">Harga Per Kilo</label>
+                    <label for="harga_kilo">Harga Per Kilo</label>
                     <input type="text" maxlength="100" class="form-control" name="harga_kilo" id="harga_kilo" placeholder="harga per kilo" required>
                 </div>
                 <div>
@@ -133,11 +136,11 @@ if (isset($_POST["submit"])) {
                     <input type="text" maxlength="100" class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" required>
                 </div>
                 <div class="center-button">
-                    <button type="reset" class="btn btn-reset">Hapus</button>
-                    <button type="submit" name="submit" class="btn btn-save">Simpan</button>
+                    <button type="reset" class="btn btn-reset"><i class="fas fa-undo"></i> Hapus</button>
+                    <button type="submit" name="submit" class="btn btn-save"><i class="fas fa-save"></i> Simpan</button>
                 </div>
                 <div class="center-button">
-                    <a href="../paketlaundry/list_paketlaundry.php" class="btn btn-back">Kembali</a>
+                    <a href="../paketlaundry/list_paketlaundry.php" class="btn btn-back"> <i class="fas fa-home"></i> Kembali</a>
                 </div>
             </form>
         </div>
