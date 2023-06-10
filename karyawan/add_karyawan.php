@@ -1,51 +1,71 @@
 <?php
 include('../conn.php');
+
 if (isset($_POST['submit'])) {
-    $id                   = addslashes($_POST['id_karyawan']);
-    $nama               = addslashes($_POST['nama_karyawan']);
-    $email               = stripslashes($_POST['email']);
-    $nohp               = stripslashes($_POST['no_hp']);
-    $alamat               = addslashes($_POST['alamat']);
-    $catatan               = addslashes($_POST['catatan']);
-    $image_name            = $_FILES['image']['name'];
-    $image_size            = $_FILES['image']['size'];
+    $id = addslashes($_POST['id_karyawan']);
+    $nama = addslashes($_POST['nama_karyawan']);
+    $email = stripslashes($_POST['email']);
+    $nohp = stripslashes($_POST['no_hp']);
+    $alamat = addslashes($_POST['alamat']);
+    $catatan = addslashes($_POST['catatan']);
+    $image_name = $_FILES['image']['name'];
+    $image_size = $_FILES['image']['size'];
     $role = "Karyawan";
 
-    $checkQuery = "SELECT * FROM karyawan WHERE id_karyawan = '$id'";
-    $checkResult = $conn->query($checkQuery);
+    $checkQuery = "SELECT * FROM karyawan WHERE id_karyawan = :id";
+    $checkStmt = $conn->prepare($checkQuery);
+    $checkStmt->bindParam(':id', $id);
+    $checkStmt->execute();
+
+    if ($checkStmt->rowCount() > 0) {
+        header("location:add_karyawan.php?pesan=exists");
+        exit();
+    }
 
     if ($image_size > 2097152) {
         header("location:add_karyawan.php?pesan=size");
-      }else{
-        if ($image_name != "") {
-          $ekstensi_izin = array('png','jpg','jpeg');
-          $pisahkan_ekstensi = explode('.', $image_name); 
-          $ekstensi = strtolower(end($pisahkan_ekstensi));
-          $file_tmp = $_FILES['image']['tmp_name'];  
-          $tanggal = md5(date('Y-m-d h:i:s'));
-          $image_nama_new = $tanggal.'-'.$image_name; 
-          if(in_array($ekstensi, $ekstensi_izin) === true)  {
-                  move_uploaded_file($file_tmp, 'image/'.$image_nama_new);
+        exit();
+    }
 
-        $query = "INSERT INTO karyawan VALUES ( '$id', '$nama', '$email', '$nohp', '$alamat', '$catatan', '$image_nama_new', '$role')";
-        $result = $conn->query($query);
-        
-        if ($result > 0) {
-            echo "
-                <script>
-                    alert('Data berhasil ditambahkan');
-                    document.location.href = '?page=Karyawan';
-                </script>";
-        } else {
-            echo "
+    if ($image_name != "") {
+        $ekstensi_izin = array('png', 'jpg', 'jpeg');
+        $pisahkan_ekstensi = explode('.', $image_name);
+        $ekstensi = strtolower(end($pisahkan_ekstensi));
+        $file_tmp = $_FILES['image']['tmp_name'];
+        $tanggal = md5(date('Y-m-d h:i:s'));
+        $image_nama_new = $tanggal . '-' . $image_name;
+
+        if (in_array($ekstensi, $ekstensi_izin) === true) {
+            move_uploaded_file($file_tmp, 'image/' . $image_nama_new);
+
+            $query = "INSERT INTO karyawan (id_karyawan, nama_karyawan, email, no_hp, alamat, catatan, image, role) VALUES (:id, :nama, :email, :nohp, :alamat, :catatan, :image, :role)";
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':nama', $nama);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':nohp', $nohp);
+            $stmt->bindParam(':alamat', $alamat);
+            $stmt->bindParam(':catatan', $catatan);
+            $stmt->bindParam(':image', $image_nama_new);
+            $stmt->bindParam(':role', $role);
+
+            if ($stmt->execute()) {
+                echo "
+                    <script>
+                        alert('Data berhasil ditambahkan');
+                        document.location.href = '../karyawan/list_karyawan.php';
+                    </script>";
+            } else {
+                echo "
                     <script>
                         alert('Data gagal ditambahkan');
-                        document.location.href = '?page=Karyawan';
+                        document.location.href = '../karyawan/list_karyawan.php';
                     </script>";
+            }
         }
-          }}}
-
+    }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -140,7 +160,7 @@ if (isset($_POST['submit'])) {
             <h2>Tambah Data Karyawan</h2>
             <form method="post" enctype="multipart/form-data">
                 <div>
-                    <label for="nama" >Nama Karyawan</label>
+                    <label for="nama">Nama Karyawan</label>
                     <input type="text" maxlength="50" class="form-control" name="nama_karyawan" placeholder="Masukkan Nama Karyawan" required autofocus>
                 </div>
                 <div>
@@ -172,7 +192,7 @@ if (isset($_POST['submit'])) {
                     <button type="submit" name="submit" class="btn btn-save">Simpan</button>
                 </div>
 
-                <div class="center-button"> 
+                <div class="center-button">
                     <a class="btn btn-back" href="list_karyawan.php"> Kembali </a>
                 </div>
 
