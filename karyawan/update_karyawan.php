@@ -91,11 +91,10 @@ if (isset($_POST["submit"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-image: url();
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: 100vh;
+            height: 100%;
             font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
@@ -111,6 +110,7 @@ if (isset($_POST["submit"])) {
             padding: 20px;
             padding-left: 30px;
             background-color: #f8f9fa;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin: 10px 30px;
         }
@@ -146,6 +146,7 @@ if (isset($_POST["submit"])) {
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
+            font-size: 12px;
         }
 
         .btn-save {
@@ -165,60 +166,62 @@ if (isset($_POST["submit"])) {
         <div class="form-container">
             <h1>Update Data Karyawan</h1>
             <form method="post" enctype="multipart/form-data">
+                <div>
+                    <label for="id_karyawan">Id Karyawan</label>
+                    <input type="text" maxlength="50" class="form-control" name="id_karyawan" value="<?= $data['id_karyawan'] ?? ''; ?>" required readonly>
+                </div>
+
+                <div>
+                    <label for="image">Image</label> <br>
+                    <input type="file" class="form-control" name="image" required autofocus>
+                </div>
+
+
+                <div>
+                    <label for="nama_karyawan">Nama Karyawan</label>
+                    <input type="text" maxlength="50" class="form-control" name="nama_karyawan" value="<?= $data['nama_karyawan']; ?>" required autofocus>
+                </div>
+
+                <div>
+                    <label for="email">Email</label>
                     <div>
-                        <label for="id_karyawan">Id Karyawan</label>
-                        <input type="text" maxlength="50" class="form-control" name="id_karyawan" value="<?= $data['id_karyawan'] ?? ''; ?>" required readonly>
+                        <input type="text" maxlength="50" class="form-control" name="email" value="<?= $data['email']; ?>" required autofocus>
                     </div>
 
                     <div>
-                        <label for="image">Image</label> <br>
-                        <input type="file" class="form-control" name="image" required autofocus>
-                    </div>
-
-
-                    <div>
-                         <label for="nama_karyawan">Nama Karyawan</label>
-                         <input type="text" maxlength="50" class="form-control" name="nama_karyawan" value="<?= $data['nama_karyawan'];?>" required autofocus>
-                    </div>
-
-                    <div>
-                         <label for="email">Email</label>
+                        <label for="no_hp">No Handphone</label>
                         <div>
-                            <input type="text" maxlength="50" class="form-control" name="email" value="<?= $data['email'];?>" required autofocus>
+                            <input type="text" maxlength="50" class="form-control" name="no_hp" value="<?= $data['no_hp']; ?>" required autofocus>
                         </div>
-
-                    <div>
-                         <label for="no_hp">No Handphone</label>
-                         <div>
-                            <input type="text" maxlength="50" class="form-control" name="no_hp" value="<?= $data['no_hp'];?>" required autofocus>
-                         </div>
                     </div>
 
                     <div>
-                         <label for="alamat">Alamat</label>
-                         <div>
-                            <input type="text" maxlength="50" class="form-control" name="alamat" value="<?= $data['alamat'];?>" required autofocus>
-                         </div>
+                        <label for="alamat">Alamat</label>
+                        <div>
+                            <input type="text" maxlength="50" class="form-control" name="alamat" value="<?= $data['alamat']; ?>" required autofocus>
+                        </div>
                     </div>
 
                     <div>
-                         <label for="catatan">Catatan</label>
-                         <div>
-                            <input type="text" maxlength="50" class="form-control" name="catatan" value="<?= $data['catatan'];?>" required autofocus>
-                         </div>
+                        <label for="catatan">Catatan</label>
+                        <div>
+                            <input type="text" maxlength="50" class="form-control" name="catatan" value="<?= $data['catatan']; ?>" required autofocus>
+                        </div>
                     </div>
 
                     <div class="center-button">
-                        <button type="reset" class="btn btn-reset"><i class="fas fa-undo"></i> Reset</button>
-                        <button type="submit" name="submit" class="btn btn-save"><i class="fas fa-save"></i>Simpan Perubahan</button>
+                        <button type="submit" name="submit" class="btn btn-save">
+                            <i class="fas fa-save"></i>Simpan Perubahan
+                        </button>
                     </div>
                     <div class="center-button">
-                    <a href="../karyawan/list_karyawan.php" class="btn btn-back">Kembali</a>
+                        <a href="../karyawan/list_karyawan.php" class="btn btn-back">
+                            <i class="fas fa-home"></i> Kembali</a>
                     </div>
 
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
 
     </div>
     <!-- Popper and Bootstrap JS -->
