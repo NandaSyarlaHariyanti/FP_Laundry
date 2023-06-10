@@ -121,19 +121,19 @@ if (isset($_POST["submit"])) {
             <form method="post" enctype="multipart/form-data">
                 <div>
                     <label for="id_paket">ID Paket Laundry</label>
-                    <input type="text" maxlength="50" class="form-control" name="id_paket" id="id_paket" placeholder="masukkan id paket laundry" required>
+                    <input type="text" maxlength="50" class="form-control" name="id_paket" id="id_paket" placeholder="Masukkan id paket laundry" required>
                 </div>
                 <div>
                     <label for="paket">Nama Paket</label>
-                    <input type="text" maxlength="50" class="form-control" name="paket" id="paket" placeholder="masukkan nama paket" required>
+                    <input type="text" maxlength="50" class="form-control" name="paket" id="paket" placeholder="Masukkan nama paket" required>
                 </div>
                 <div>
                     <label for="harga_kilo">Harga Per Kilo</label>
-                    <input type="text" maxlength="100" class="form-control" name="harga_kilo" id="harga_kilo" placeholder="harga per kilo" required>
+                    <input type="text" maxlength="100" class="form-control" name="harga_kilo" id="harga_kilo" placeholder="Harga per kilo" required>
                 </div>
                 <div>
                     <label for="deskripsi">Deskripsi</label>
-                    <input type="text" maxlength="100" class="form-control" name="deskripsi" id="deskripsi" placeholder="deskripsi" required>
+                    <input type="text" maxlength="100" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deskripsi" required>
                 </div>
                 <div class="center-button">
                     <button type="reset" class="btn btn-reset"><i class="fas fa-undo"></i> Hapus</button>
