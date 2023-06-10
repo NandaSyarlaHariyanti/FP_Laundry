@@ -32,11 +32,9 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            background-image: url();
-            background-size: cover;
-            background-repeat: no-repeat;
             height: 100vh;
             font-family: Arial, Helvetica, sans-serif;
         }
@@ -54,6 +52,7 @@ if (isset($_POST["submit"])) {
             padding: 20px;
             padding-left: 30px;
             background-color: #f8f9fa;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             margin: 10px 30px;
         }
@@ -89,6 +88,7 @@ if (isset($_POST["submit"])) {
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
+            font-size: 12px;
         }
 
         .btn-save {
@@ -125,10 +125,13 @@ if (isset($_POST["submit"])) {
                     <input type="text" maxlength="100" class="form-control" name="deskripsi" id="deskripsi" value="<?= $data['deskripsi']; ?>" required>
                 </div>
                 <div class="center-button">
-                    <button type="submit" name="submit" class="btn btn-save">Simpan Perubahan</button>
+                    <button type="submit" name="submit" class="btn btn-save">
+                        <i class="fas fa-save"></i> Simpan Perubahan
+                    </button>
                 </div>
                 <div class="center-button">
-                    <a href="../paketlaundry/list_paketlaundry.php" class="btn btn-back">Kembali</a>
+                    <a href="../paketlaundry/list_paketlaundry.php" class="btn btn-back">
+                        <i class="fas fa-home"></i> Kembali</a>
                 </div>
             </form>
         </div>
