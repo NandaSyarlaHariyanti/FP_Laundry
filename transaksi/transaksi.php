@@ -78,7 +78,7 @@
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href="<?php echo "../transaksi/transaksi.php"; ?>">
+                    <a href="<?php echo "../transaksi/transaksi.php"; ?>" class="active">
                         <i class='bx bx-transfer'></i>
                         <span class="link_name">Transaksi</span>
                     </a>
