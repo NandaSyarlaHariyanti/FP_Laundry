@@ -157,7 +157,7 @@ if (isset($_POST["submit"])) {
             background-color: #0056b3;
         }
     </style>
-
+    <link rel="icon" href="../binatoo.ico" type="image/x-icon">
     <title>Update Karyawan</title>
 </head>
 

@@ -4,7 +4,7 @@
 <head>
     <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
     <title>Halaman Awal</title>
-
+    <link rel="icon" href="../binatoo.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 

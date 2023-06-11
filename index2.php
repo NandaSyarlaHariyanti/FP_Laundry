@@ -5,6 +5,7 @@
     <title>Login</title>
     <link href='https://fonts.googleapis.com/css?family=Fredoka One' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../binatoo.ico" type="image/x-icon">
 </head>
 
 <body>

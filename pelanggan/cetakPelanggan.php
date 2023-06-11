@@ -9,7 +9,7 @@ include('../function.php');
 <head>
     <link rel="icon" href="../binatoo.ico" type="image/x-icon">
 
-    <title>BINATO (FP)</title>
+    <title>Cetak Data Pelanggan</title>
     <style>
         table {
             border-collapse: collapse;
