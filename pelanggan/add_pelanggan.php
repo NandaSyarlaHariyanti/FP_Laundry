@@ -1,41 +1,51 @@
 <?php
-	if( isset($_POST['submit'])) {
-        $id           		= addslashes($_POST['id_pelanggan']);
-        $nama       		= addslashes($_POST['nama_pelanggan']);
-		$alamat       		= addslashes($_POST['alamat_pelanggan']);
-        $nohp       		= stripslashes($_POST['no_hp_pelanggan']);
+include('../conn.php');
+include('function.php');
 
-    $image = uploadImage('upload/pelanggan');
-    if ( !$image ) {
-      return false;
-    }
-    $query = "INSERT INTO pelanggan VALUES ( '$id', '$nama', '$alamat', '$nohp')";
-    if( queryData($query) > 0){
+// ID otomatis
+if (isset($_POST["submit"])) {
+    if (addPelanggan($_POST) > 0) {
         echo "
             <script>
-                alert('Data berhasil ditambahkan');
-                document.location.href = '?page=Pelanggan';
-            </script>";
-        } else {
-            echo "
-                <script>
-                    alert('Data gagal ditambahkan');
-                    document.location.href = '?page=Pelanggan';
-                </script>";
+                alert('Data Berhasil Ditambahkan');
+                document.location.href = '../paketlaundry/list_paketlaundry.php';
+            </script> 
+        ";
+    } else {
+        echo "
+            <script>
+                alert('Data Berhasil Ditambahkan');
+                document.location.href = '../paketlaundry/list_paketlaundry.php';
+            </script> 
+    ";
     }
 }
-?>   
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Open+Sans&family=Raleway:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="../binatoo.ico" type="image/x-icon">
+    <title>Tambah Pelanggan</title>
     <style>
         body {
+            background-image: url();
+            background-size: cover;
+            background-repeat: no-repeat;
             height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .container {
@@ -43,13 +53,30 @@
             justify-content: center;
             align-items: center;
             height: 100%;
+            margin: 20px;
         }
 
         .form-container {
-            width: 600px;
+            width: 500px;
             padding: 20px;
+            padding-left: 30px;
             background-color: #f8f9fa;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            margin: 10px 30px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 5px;
+            margin-bottom: 20px;
         }
 
         .center-button {
@@ -61,45 +88,72 @@
         .center-button button {
             margin-right: 10px;
         }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .btn-reset {
+            background-color: #c82333;
+        }
+
+        .btn-save {
+            background-color: #28a745;
+        }
+
+        .btn-back {
+            background-color: #0056b3;
+        }
     </style>
-    
-    <title>Tambah Pelanggan</title>
 </head>
+
+
 <body>
     <div class="container">
         <div class="form-container">
-            <h2>Tambah Data Pelanggan</h2>
+            <h1>Tambah Data Pelanggan</h1>
             <form method="post" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="nama" class="form-label">Nama Pelanggan</label>
-                    <input type="text" maxlength="50" class="form-control" name="nama_pelanggan" id="nama" placeholder="Masukkan Nama Pelanggan" required autofocus>
+                <div>
+                    <label for="id_paket">ID Pelanggan</label>
+                    <input type="text" maxlength="50" class="form-control" name="id_pelanggan" id="id_pelanggan" placeholder="Masukkan id pelanggan" required>
                 </div>
-                <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    <input type="file" class="form-control" name="image" required>
+                <div>
+                    <label for="nama_pelanggan">Nama Pelanggan</label>
+                    <input type="text" maxlength="50" class="form-control" name="nama_pelanggan" id="nama_pelanggan" placeholder="Masukkan nama pelanggan" required>
                 </div>
-                <div class="mb-3">
-                    <label for="id" class="form-label">ID Pelanggan</label>
-                    <input type="text" maxlength="30" class="form-control" name="id_pelanggan" id="id" placeholder="ID Pelanggan" required>
+                <div>
+                    <label for="username">Username</label>
+                    <input type="text" maxlength="50" class="form-control" name="username" id="username" placeholder="Masukkan username" required>
                 </div>
-                <div class="mb-3">
-                    <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" maxlength="100" class="form-control" name="alamat_pelanggan" id="alamat" placeholder="Alamat" required>
+                <div>
+                    <label for="password">Password</label>
+                    <input type="text" maxlength="50" class="form-control" name="password" id="password" placeholder="Masukkan password" required>
+                </div>                
+                <div>
+                    <label for="alamat_pelanggan">Alamat Pelanggan</label>
+                    <input type="text" maxlength="50" class="form-control" name="alamat_pelanggan" id="alamat_pelanggan" placeholder="Masukkan alamat" required>
                 </div>
-                <div class="mb-3">
-                    <label for="no_hp" class="form-label">No Handphone</label>
-                    <input type="number" min="0" maxlength="20" class="form-control" name="no_hp_pelanggan" id="no_hp" placeholder="No Handphone" required>
+                <div>
+                    <label for="no_hp_pelanggan">No. HP Pelanggan</label>
+                    <input type="text" maxlength="50" class="form-control" name="no_hp_pelanggan" id="no_hp_pelanggan" placeholder="Masukkan nomor Hp" required>
                 </div>
                 <div class="center-button">
-                    <button type="reset" class="btn btn-danger mr-2"><i class="fas fa-undo"></i> Reset</button>
-                    <button type="submit" name="submit" class="btn btn-success"><i class="fas fa-save"></i> Save</button>
+                    <button type="reset" class="btn btn-reset"><i class="fas fa-undo"></i> Hapus</button>
+                    <button type="submit" name="submit" class="btn btn-save"><i class="fas fa-save"></i> Simpan</button>
+                </div>
+                <div class="center-button">
+                    <a href="../paketlaundry/list_paketlaundry.php" class="btn btn-back"> <i class="fas fa-home"></i> Kembali</a>
                 </div>
             </form>
         </div>
     </div>
-
-    <!-- Popper and Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
+
 </html>
