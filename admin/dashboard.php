@@ -34,7 +34,7 @@
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href=" <?php echo "../pelanggan/list_pelanggan.php"; ?> ">
                         <i class='bx bxs-user'></i>
                         <span class="link_name">Pelanggan</span>
                     </a>
@@ -48,7 +48,7 @@
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href=" <?php echo "../paketlaundry/list_paketlaundry.php "; ?>">
                         <i class='bx bxs-t-shirt'></i>
                         <span class="link_name">Paket Laundry</span>
                     </a>
@@ -62,29 +62,30 @@
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href="<?php echo "../karyawan/list_karyawan.php"; ?>">
                         <i class='bx bxs-user-voice'></i>
                         <span class="link_name">Karyawan</span>
                     </a>
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
-                    <li><a href="<?php echo "../karyawan/karyawan.php"; ?>">List Karyawan</a></li>
+                    <li><a class="link_name" href="#">Karyawan</a></li>
+                    <li><a href="<?php echo "../karyawan/list_karyawan.php"; ?>">List Karyawan</a></li>
                     <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
                 </ul>
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href="<?php echo "../transaksi/transaksi.php"; ?>">
                         <i class='bx bx-transfer'></i>
                         <span class="link_name">Transaksi</span>
                     </a>
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Transaksi</a></li>
                     <li><a href="<?php echo "../transaksi/transaksi.php"; ?>">List Transaksi</a></li>
                     <li><a href="<?php echo "../transaksi/add_transaksi.php"; ?>">Tambah Transaksi</a></li>
-                </ul>
             </li>
 
         </ul>

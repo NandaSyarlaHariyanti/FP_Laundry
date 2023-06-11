@@ -166,6 +166,7 @@ include('../function.php');
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Karyawan</a></li>
                     <li><a href="<?php echo "../karyawan/list_karyawan.php"; ?>">List Karyawan</a></li>
                     <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
                 </ul>
@@ -179,6 +180,7 @@ include('../function.php');
                     <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Transaksi</a></li>
                     <li><a href="<?php echo "../transaksi/transaksi.php"; ?>">List Transaksi</a></li>
                     <li><a href="<?php echo "../transaksi/add_transaksi.php"; ?>">Tambah Transaksi</a></li>
             </li>
