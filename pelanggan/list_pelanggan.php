@@ -121,7 +121,7 @@ include('../function.php');
 
         <ul class="nav-links">
             <li>
-                <a href="<?php echo "dashboard.php"; ?>" >
+                <a href="<?php echo "../admin/dashboard.php"; ?>" >
                     <i class='bx bxs-home-smile'></i>
                     <span class="link_name">Home</span>
                 </a>
@@ -131,7 +131,7 @@ include('../function.php');
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # " class="active">
+                    <a href="<?php echo "../pelanggan/list_pelanggan.php"; ?>" class="active">
                         <i class='bx bxs-user'></i>
                         <span class="link_name">Pelanggan</span>
                     </a>
@@ -145,7 +145,7 @@ include('../function.php');
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href="<?php echo "../paketlaundry/list_paketlaundry.php "; ?>">
                         <i class='bx bxs-t-shirt'></i>
                         <span class="link_name">Paket Laundry</span>
                     </a>
@@ -159,7 +159,7 @@ include('../function.php');
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href="<?php echo "../karyawan/list_karyawan.php"; ?>">
                         <i class='bx bxs-user-voice'></i>
                         <span class="link_name">Karyawan</span>
                     </a>
@@ -172,7 +172,7 @@ include('../function.php');
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href=" # ">
+                    <a href="<?php echo "../transaksi/transaksi.php"; ?>">
                         <i class='bx bx-transfer'></i>
                         <span class="link_name">Transaksi</span>
                     </a>
