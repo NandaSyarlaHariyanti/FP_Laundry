@@ -20,7 +20,7 @@
     <?php if (isset($_GET['name'])) { $name = $_GET['name'];}?>
     <section class="dashboard">
     <div class="dash-content">
-        <a href="pelanggan.php?name=<?= urlencode($name) ?>" class="home">home</a>
+       <a href="dashboardpelanggan.php" class="home">home</a>
             <div class="overview">
                 <div class="title">
                     <i class="uil uil-tachometer-fast-alt"></i>
