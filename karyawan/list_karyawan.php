@@ -215,18 +215,23 @@ include('../function.php');
             </div>
             <div class="card-body">
                 <!-- START: Button -->
-                <div class="d-flex justify-content-start mb-4">
+                <div class="button-group">
                     <a href="../karyawan/add_karyawan.php" type="button" class="button-tambah">
                         <i class="fas fa-plus fa-sm">
                         </i> Tambah Data
                     </a>
-                    &nbsp;&nbsp;
+                    <span>&nbsp;&nbsp;</span>
                     <a href="../karyawan/cetakkaryawan.php" target="_blank" type="button" class="button-cetak">
-                        <i class="fas fa-download fa-sm">
-                        </i> Cetak File</a>
+                        <i class="fas fa-download fa-sm"></i> Cetak File
+                        </a>
+                    </div>
                 </div>
-                <!-- END: Button -->
-                <table id="dataTables" class="table table-hover">
+            </div>
+            
+            <div class="database">
+                <div class="database-data">
+                    <div class="center">     
+                    <table id="dataTables" class="table table-hover">
                     <thead>
                         <tr style="text-align: center;">
                             <th>No</th>
@@ -283,6 +288,8 @@ include('../function.php');
                     </tbody>
                 </table>
             </div>
+        </div>
+        </div>
         </div>
 
     </section>
