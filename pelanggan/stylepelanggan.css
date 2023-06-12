@@ -53,7 +53,7 @@ body{
     left: 0;
     height: 100%;
     width: 260px;
-    background: var(--primary-color)
+    background: var(--primary-color);
     z-index: 200;
     transition: all 0.5s ease;
   }
@@ -467,14 +467,10 @@ body{
   color: var(--text-color);
 }
 .boxes .box .text{
-  display: block;
-  margin-top: 10px;
-  align-items: center;
+  white-space: nowrap;
   font-size: 18px;
   font-weight: 500;
   color: var(--text-color);
-  transition: var(--tran-03);
-  animation: enterAnimation 0.5s forwards;
 }
 .boxes .box .number{
   font-size: 40px;
@@ -501,16 +497,6 @@ background-color: var(--box4-color);
     display: flex;
 }
 
-@keyframes enterAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 @media (max-width: 3000px) {
   .database .database-data{
@@ -571,16 +557,11 @@ background-color: var(--box4-color);
       min-width: 40px;
     }
   }
-@media (max-width: 768px) {
+@media (max-width: 780px) {
     .dash-content .boxes .box{
         width: calc(100% / 2 - 15px);
         margin-top: 15px;
     }
-    .boxes .box.text {
-      opacity: 1;
-      height: auto;
-    }
-    
 }
 @media (max-width: 560px) {
     .dash-content .boxes .box{

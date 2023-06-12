@@ -61,7 +61,10 @@ include('../function.php');
             max-width: auto;
             text-align: center;
         }
+        #action {
+            white-space: nowrap;
 
+        }
         td.description {
             max-width: 250px;
             word-wrap: break-word;
@@ -116,16 +119,16 @@ include('../function.php');
         <div class="logo-details">
             <i class='bx bxs-washer'></i>
             <span class="logo_name">BINATO</span>
-
         </div>
 
         <ul class="nav-links">
             <li>
+                <div class="iocn-link">
                 <a href="<?php echo "../admin/dashboard.php"; ?>" >
                     <i class='bx bxs-home-smile'></i>
                     <span class="link_name">Home</span>
                 </a>
-                <ul class="sub-menu blank">
+                <ul class="sub-menu">
                     <li><a class="link_name" href="<?php echo "../admin/dashboard.php"; ?>">Home</a></li>
                 </ul>
             </li>
@@ -256,7 +259,7 @@ include('../function.php');
                                         <td><?php echo $data['paket']; ?></td>
                                         <td><?php echo $data['harga_kilo']; ?></td>
                                         <td class="description"><?php echo $data['deskripsi']; ?></td>
-                                        <td>
+                                        <td id="action">
                                             <a href="updatepaket.php?id_paket=<?php echo $data['id_paket']; ?>" class="btn btn-edit">
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>

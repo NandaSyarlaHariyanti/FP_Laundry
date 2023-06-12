@@ -1,4 +1,6 @@
-<?php include('../conn.php'); ?>
+<?php
+include('../conn.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,19 +11,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="styletransaksi.css">
-    <link rel="stylesheet" href="styletransaksi2.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="icon" href="../binatoo.ico" type="image/x-icon">
     <title>BINATO (FP)</title>
+    <style>
+        .card-body {
+            margin: 10px 10px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 4px;
+        }
+
+        .button-tambah {
+            background-color: #007bff;
+            border-radius: 5px;
+            color: #fff;
+            border: none;
+            padding: 0.5rem;
+            margin-right: 3px;
+            text-decoration: none;
+        }
+
+        .button-cetak {
+            background-color: #17a2b8;
+            border-radius: 5px;
+            color: #fff;
+            border: none;
+            padding: 0.5rem;
+            margin-right: 3px;
+            text-decoration: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 30px 40px;
+            width: 90%;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            max-width: auto;
+            text-align: center;
+        }
+        #action {
+            white-space: nowrap;
+
+        }
+
+        td.description {
+            max-width: 250px;
+            word-wrap: break-word;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #333;
+            margin-right: 5px;
+        }
+
+        .btn-edit {
+            background-color: transparent;
+            border-color: #ffc107;
+            color: #ffc107;
+        }
+
+        .btn-hapus {
+            background-color: transparent;
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .btn-edit:active,
+        .btn-edit:hover {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-hapus:active,
+        .btn-hapus:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        
+        .keterangan-lunas {
+        background-color: #dc3545;
+        color: white;
+        padding: 8px 10px;
+        border-radius: 4px;
+        font-size: 15px;
+        }
+
+        .keterangan-belum-lunas {
+        background-color: #28a745;
+        color: white;
+        padding: 8px 10px;
+        border-radius: 4px;
+        font-size: 15px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="sidebar close">
+
         <div class="logo-details">
             <i class='bx bxs-washer'></i>
             <span class="logo_name">BINATO</span>
+
         </div>
 
         <ul class="nav-links">
@@ -36,7 +150,7 @@
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href="<?php echo "../pelanggan/list_pelanggan.php"; ?>" >
+                    <a href="<?php echo "../pelanggan/list_pelanggan.php"; ?>">
                         <i class='bx bxs-user'></i>
                         <span class="link_name">Pelanggan</span>
                     </a>
@@ -97,6 +211,7 @@
         <div class="top">
             <div class="sidebar-button">
                 <i class='bx bx-menu sidebar-toggle'></i>
+
             </div>
             <div class="search-box">
                 <input type="text" placeholder="Search...">
@@ -114,19 +229,26 @@
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">List Transaksi</span>
                 </div>
-
                 <div class="card-body">
-                    <div class="d-flex justify-content-start mb-4">
-                        <a href="../transaksi/add_transaksi.php" class="btn btn-sm btn-primary mr-3">
-                            <i class="fas fa-plus fa-sm text-white"></i> Tambah Transaksi
+                    <!-- START: Button -->
+                    <div class="button-group">
+                        <a href="../pelanggan/add_pelanggan.php" class="button-tambah">
+                            <i class="fas fa-plus fa-sm"></i> Tambah Data
                         </a>
-                        <a href="../transaksi/cetaktransaksi.php" target="_blank" class="btn btn-sm btn-info mr-3">
-                            <i class="fas fa-download fa-sm text-white"></i> Cetak Transaksi</a>
+                        <span>&nbsp;&nbsp;</span>
+                        <a href="../pelanggan/cetakPelanggan.php" target="_blank" class="button-cetak">
+                            <i class="fas fa-download fa-sm"></i> Cetak File
+                        </a>
                     </div>
-                    <br>
-                    <table id="dataTables" class="table table-hover">
-                        <thead>
-                            <tr style="text-align: center;">
+                </div>
+            </div>
+        
+            <div class="database">
+                <div class="database-data">
+                    <div class="center">        
+                        <table id="dataTables" class="table table-hover">
+                            <thead>
+                                <tr style="text-align : center;">
                                 <th>No</th>
                                 <th>Id Transaksi</th>
                                 <th>Tanggal Transaksi</th>
@@ -138,65 +260,66 @@
                                 <th>Kembalian</th>
                                 <th>Keterangan</th>
                                 <th>Action</th>
-                            </tr>
-                        </thead>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $query = "SELECT transaksi.id_transaksi, transaksi.tanggal , pelanggan.nama_pelanggan, paket_cuci.paket, transaksi.qty, transaksi.biaya, transaksi.bayar, transaksi.kembalian 
+                                            FROM transaksi 
+                                            INNER JOIN pelanggan 
+                                            ON transaksi.id_pelanggan = pelanggan.id_pelanggan
+                                            INNER JOIN paket_cuci 
+                                            ON transaksi.id_paket = paket_cuci.id_paket 
+                                            ORDER BY transaksi.id_transaksi ASC";
+                                $result = $conn->query($query);
+                                ?>
 
-                        <tbody>
-                            <?php
-                            $query = "SELECT transaksi.id_transaksi, transaksi.tanggal , pelanggan.nama_pelanggan, paket_cuci.paket, transaksi.qty, transaksi.biaya, transaksi.bayar, transaksi.kembalian 
-                                        FROM transaksi 
-                                        INNER JOIN pelanggan 
-                                        ON transaksi.id_pelanggan = pelanggan.id_pelanggan
-                                        INNER JOIN paket_cuci 
-                                        ON transaksi.id_paket = paket_cuci.id_paket 
-                                        ORDER BY transaksi.id_transaksi ASC";
-                            $result = $conn->query($query);
-                            ?>
-
-                            <?php $no = 1;
-                            while ($data = $result->fetch(PDO::FETCH_ASSOC)) : ?>
-                                <tr>
-                                    <td style="text-align: center;"><?= $no++; ?></td>
-                                    <td style="text-align: center;"><?= $data['id_transaksi']; ?></td>
-                                    <td style="text-align: center;"><?= $data['tanggal']; ?></td>
-                                    <td style="text-align: center;"><?= $data['nama_pelanggan']; ?></td>
-                                    <td style="text-align: center;"><?= $data['paket']; ?></td>
-                                    <td style="text-align: center;"><?= $data['qty']; ?></td>
-                                    <td style="text-align: center;"><?= $data['biaya']; ?></td>
-                                    <td style="text-align: center;"><?= $data['bayar']; ?></td>
-                                    <td style="text-align: center;"><?= $data['kembalian']; ?></td>
-                                    <td style="text-align: center;">
-                                        <?php
-                                        if ($data['kembalian'] < 0) {
-                                            echo "<span class='keterangan-lunas'>Belum Lunas</span>";
-                                        } else {
-                                            echo "<span class='keterangan-belum-lunas'>Lunas</span>";
-                                        }
-                                        ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <div class="btn-group">
-                                            <a href="<?php echo "../transaksi/updatetransaksi.php?id_transaksi=" . $data['id_transaksi']; ?>" class="btn btn-outline-warning btn-sm">
+                                <?php $no = 1;
+                                while ($data = $result->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $data['id_transaksi']; ?></td>
+                                        <td><?= $data['tanggal']; ?></td>
+                                        <td><?= $data['nama_pelanggan']; ?></td>
+                                        <td><?= $data['paket']; ?></td>
+                                        <td><?= $data['qty']; ?></td>
+                                        <td><?= $data['biaya']; ?></td>
+                                        <td><?= $data['bayar']; ?></td>
+                                        <td><?= $data['kembalian']; ?></td>
+                                        <td>
+                                            <?php
+                                            if ($data['kembalian'] < 0) {
+                                                echo "<span class='keterangan-lunas'>Belum Lunas</span>";
+                                            } else {
+                                                echo "<span class='keterangan-belum-lunas'>Lunas</span>";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td id="action">
+                                            <a href="<?php echo "../transaksi/updatetransaksi.php?id_transaksi=" . $data['id_transaksi']; ?>" class="btn btn-edit">
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
-                                            <form method="POST" action="../transaksi/hapustransaksi.php" style="display: inline;">
-                                                <input class="bx bxs-delete" type="hidden" name="id_transaksi" value="<?php echo $data['id_transaksi']; ?>">
-                                                <button class="btn btn-outline-danger btn-sm" type="submit" name="deletes">
-                                                    <i class="fas fa-trash"></i> Hapus
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
+                                            <form method="POST" action="../transaksi/hapustransaksi.php" style="display: inline-block;">
+                                                <input type="hidden" name="id_transaksi" value="<?php echo $data['id_transaksi']; ?>">
+                                                <button type="submit" name="deletes" class="btn btn-hapus">
+                                                        <i class="fas fa-trash"></i> Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
 
-                                </tr>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </table>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+
     </section>
 
+    <!--<script src="script.js"></script>-->
     <script src="../script.js"></script>
 </body>
 

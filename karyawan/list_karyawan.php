@@ -62,7 +62,10 @@ include('../function.php');
             max-width: auto;
             text-align: center;
         }
+        #action {
+            white-space: nowrap;
 
+        }
         td.description {
             max-width: 250px;
             word-wrap: break-word;
@@ -212,79 +215,82 @@ include('../function.php');
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">List Karyawan</span>
                 </div>
-            </div>
-            <div class="card-body">
+                <div class="card-body">
                 <!-- START: Button -->
-                <div class="d-flex justify-content-start mb-4">
-                    <a href="../karyawan/add_karyawan.php" type="button" class="button-tambah">
-                        <i class="fas fa-plus fa-sm">
-                        </i> Tambah Data
-                    </a>
-                    &nbsp;&nbsp;
-                    <a href="../karyawan/cetakkaryawan.php" target="_blank" type="button" class="button-cetak">
-                        <i class="fas fa-download fa-sm">
-                        </i> Cetak File</a>
+                    <div class="button-group">
+                        <a href="../karyawan/add_karyawan.php" type="button" class="button-tambah">
+                            <i class="fas fa-plus fa-sm">
+                            </i> Tambah Data
+                        </a>
+                        <span>&nbsp;&nbsp;</span>
+                        <a href="../karyawan/cetakkaryawan.php" target="_blank" type="button" class="button-cetak">
+                            <i class="fas fa-download fa-sm"></i> Cetak File
+                        </a>
+                    </div>
                 </div>
+            </div>
                 <!-- END: Button -->
-                <table id="dataTables" class="table table-hover">
-                    <thead>
-                        <tr style="text-align: center;">
-                            <th>No</th>
-                            <th>ID Karyawan</th>
-                            <th>Nama Karyawan</th>
-                            <th>Email</th>
-                            <th>No Hp</th>
-                            <th>Alamat</th>
-                            <th>Catatan</th>
-                            <th>Foto</th>
-                            <th>Role</th>
-                            <th>Action</th>
-                        </tr>
+            <div class="database">
+                <div class="database-data">        
+                        <table id="dataTables" class="table table-hover">
+                            <thead>
+                                <tr style="text-align: center;">
+                                    <th>No</th>
+                                    <th>ID Karyawan</th>
+                                    <th>Nama Karyawan</th>
+                                    <th>Email</th>
+                                    <th>No Hp</th>
+                                    <th>Alamat</th>
+                                    <th>Catatan</th>
+                                    <th>Foto</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
 
-                    </thead>
-                    <tbody>
-                        <?php
-                        //proses menampilkan data dari database:
-                        //siapkan query SQL
-                        $query = "SELECT * FROM karyawan";
-                        //eksekusi query
-                        $result = $conn->query($query);
-                        $no = 1; ?>
+                            </thead>
+                            <tbody>
+                                <?php
+                                //proses menampilkan data dari database:
+                                //siapkan query SQL
+                                $query = "SELECT * FROM karyawan";
+                                //eksekusi query
+                                $result = $conn->query($query);
+                                $no = 1; ?>
 
-                        <?php while ($data = $result->fetch(PDO::FETCH_ASSOC)) : ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $data['id_karyawan']; ?></td>
-                                <td><?= $data['nama_karyawan']; ?></td>
-                                <td><?= $data['email']; ?></td>
-                                <td><?= $data['no_hp']; ?></td>
-                                <td><?= $data['alamat']; ?></td>
-                                <td><?= $data['catatan']; ?></td>
-                                <td><?php if ($data['image'] == "") { ?>
-                                        <img src="https://via.placeholder.com/500x500.png?text=PAS+FOTO+SISWA" style="width:100px;height:100px;">
-                                    <?php } else { ?>
-                                        <img src="image/<?php echo $data['image']; ?>" style="max-height: 160px; max-width: 160px; object-fit: contain;">
-                                    <?php } ?>
-                                </td>
-                                <td><?= $data['role']; ?></td>
-                                <td>
-                                    <a href="<?php echo "update_karyawan.php?id_karyawan=" . $data['id_karyawan']; ?>" class="btn btn-edit">
-                                        <i class="fas fa-edit"></i> Edit
-                                    </a>
-                                    <form method="POST" action="../karyawan/hapuskaryawan.php" style="display: inline-block;">
-                                        <input type="hidden" name="id_karyawan" value="<?php echo $data['id_karyawan']; ?>">
-                                        <button type="submit" name="deletes" class="btn btn-hapus">
-                                            <i class="fas fa-trash"></i> Hapus
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php endwhile; ?>
-                    </tbody>
-                </table>
+                                <?php while ($data = $result->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $data['id_karyawan']; ?></td>
+                                        <td><?= $data['nama_karyawan']; ?></td>
+                                        <td><?= $data['email']; ?></td>
+                                        <td><?= $data['no_hp']; ?></td>
+                                        <td><?= $data['alamat']; ?></td>
+                                        <td><?= $data['catatan']; ?></td>
+                                        <td><?php if ($data['image'] == "") { ?>
+                                                <img src="https://via.placeholder.com/500x500.png?text=PAS+FOTO+SISWA" style="width:100px;height:100px;">
+                                            <?php } else { ?>
+                                                <img src="image/<?php echo $data['image']; ?>" style="max-height: 160px; max-width: 160px; object-fit: contain;">
+                                            <?php } ?>
+                                        </td>
+                                        <td><?= $data['role']; ?></td>
+                                        <td id="action">
+                                            <a href="<?php echo "update_karyawan.php?id_karyawan=" . $data['id_karyawan']; ?>" class="btn btn-edit">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <form method="POST" action="../karyawan/hapuskaryawan.php" style="display: inline-block;">
+                                                <input type="hidden" name="id_karyawan" value="<?php echo $data['id_karyawan']; ?>">
+                                                <button type="submit" name="deletes" class="btn btn-hapus">
+                                                    <i class="fas fa-trash"></i> Hapus
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                </div>
             </div>
         </div>
-
     </section>
 
     <script src="../script.js"></script>

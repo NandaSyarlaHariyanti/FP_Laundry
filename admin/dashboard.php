@@ -106,85 +106,89 @@
             background-color: #dc3545;
             color: #fff;
         }
+        #icon {
+            margin-top: 15px;
+            margin-bottom:5px;
+        }
     </style>
 </head>
 
 <body>
     <div class="sidebar close">
 
-        <div class="logo-details">
-            <i class='bx bxs-washer'></i>
-            <span class="logo_name">BINATO</span>
+    <div class="logo-details">
+        <i class='bx bxs-washer'></i>
+        <span class="logo_name">BINATO</span>
 
-        </div>
+    </div>
 
-        <ul class="nav-links">
-            <li>
-                <a href="<?php echo "dashboard.php"; ?>" class="active">
-                    <i class='bx bxs-home-smile'></i>
-                    <span class="link_name">Home</span>
+    <ul class="nav-links">
+        <li>
+            <a href="<?php echo "../admin/dashboard.php"; ?>" class="active">
+                <i class='bx bxs-home-smile'></i>
+                <span class="link_name">Home</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="<?php echo "../admin/dashboard.php"; ?>">Home</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="<?php echo "../pelanggan/list_pelanggan.php"; ?>" >
+                    <i class='bx bxs-user'></i>
+                    <span class="link_name">Pelanggan</span>
                 </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="<?php echo "../admin/dashboard.php"; ?>">Home</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href=" <?php echo "../pelanggan/list_pelanggan.php"; ?> ">
-                        <i class='bx bxs-user'></i>
-                        <span class="link_name">Pelanggan</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Pelanggan</a></li>
-                    <li><a href="<?php echo "../pelanggan/list_pelanggan.php"; ?>">List Pelanggan </a></li>
-                    <li><a href="<?php echo "../pelanggan/add_pelanggan.php"; ?>">Tambah Pelanggan</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href=" <?php echo "../paketlaundry/list_paketlaundry.php "; ?>">
-                        <i class='bx bxs-t-shirt'></i>
-                        <span class="link_name">Paket Laundry</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Paket Laundry</a></li>
-                    <li><a href="<?php echo "../paketlaundry/list_paketlaundry.php "; ?>">List Paket Laundry</a></li>
-                    <li><a href="<?php echo "../paketlaundry/add_paketlaundry.php "; ?>">Tambah Paket Laundry </a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="<?php echo "../karyawan/list_karyawan.php"; ?>">
-                        <i class='bx bxs-user-voice'></i>
-                        <span class="link_name">Karyawan</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Karyawan</a></li>
-                    <li><a href="<?php echo "../karyawan/list_karyawan.php"; ?>">List Karyawan</a></li>
-                    <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="iocn-link">
-                    <a href="<?php echo "../transaksi/transaksi.php"; ?>">
-                        <i class='bx bx-transfer'></i>
-                        <span class="link_name">Transaksi</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Transaksi</a></li>
-                    <li><a href="<?php echo "../transaksi/transaksi.php"; ?>">List Transaksi</a></li>
-                    <li><a href="<?php echo "../transaksi/add_transaksi.php"; ?>">Tambah Transaksi</a></li>
-            </li>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Pelanggan</a></li>
+                <li><a href="<?php echo "../pelanggan/list_pelanggan.php"; ?>">List Pelanggan </a></li>
+                <li><a href="<?php echo "../pelanggan/add_pelanggan.php"; ?>">Tambah Pelanggan</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="<?php echo "../paketlaundry/list_paketlaundry.php "; ?>">
+                    <i class='bx bxs-t-shirt'></i>
+                    <span class="link_name">Paket Laundry</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Paket Laundry</a></li>
+                <li><a href="<?php echo "../paketlaundry/list_paketlaundry.php "; ?>">List Paket Laundry</a></li>
+                <li><a href="<?php echo "../paketlaundry/add_paketlaundry.php "; ?>">Tambah Paket Laundry </a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="<?php echo "../karyawan/list_karyawan.php"; ?>">
+                    <i class='bx bxs-user-voice'></i>
+                    <span class="link_name">Karyawan</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Karyawan</a></li>
+                <li><a href="<?php echo "../karyawan/list_karyawan.php"; ?>">List Karyawan</a></li>
+                <li><a href="<?php echo "../karyawan/add_karyawan.php"; ?>">Tambah Karyawan</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="<?php echo "../transaksi/transaksi.php"; ?>">
+                    <i class='bx bx-transfer'></i>
+                    <span class="link_name">Transaksi</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Transaksi</a></li>
+                <li><a href="<?php echo "../transaksi/transaksi.php"; ?>">List Transaksi</a></li>
+                <li><a href="<?php echo "../transaksi/add_transaksi.php"; ?>">Tambah Transaksi</a></li>
+        </li>
 
-        </ul>
+    </ul>
     </div>
 
     <section class="dashboard">
@@ -212,22 +216,22 @@
 
                 <div class="boxes">
                     <div class="box box1">
-                        <i class='bx bxs-user'></i>
+                        <i class='bx bxs-user' id="icon"></i>
                         <span class="text"><center>Jumlah Pelanggan<center></span>
 						<span class="number"><?= numData('pelanggan'); ?></span>
                     </div>
                     <div class="box box2">
-                        <i class='bx bxs-t-shirt'></i>
+                        <i class='bx bxs-t-shirt' id="icon"></i>
                         <span class="text"><center>Jumlah Paket Laundry<center></span>
                         <span class="number"><?= numData('paket_cuci'); ?></span>
                     </div>
                     <div class="box box3">
-                        <i class='bx bxs-user-voice'></i>
+                        <i class='bx bxs-user-voice' id= "icon"></i>
                         <span class="text"><center>Jumlah Karyawan<center></span>
                         <span class="number"><?= numData('karyawan'); ?></span>
                     </div>                    
                     <div class="box box4">
-                        <i class='bx bx-transfer'></i>
+                        <i class='bx bx-transfer'id="icon"></i>
                         <span class="text"><center>Jumlah Transaksi<center></span>
                         <span class="number"><?= numData('transaksi'); ?></span>
                     </div>
