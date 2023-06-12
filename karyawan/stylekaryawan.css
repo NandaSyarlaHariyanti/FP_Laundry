@@ -467,12 +467,6 @@ body{
   color: var(--text-color);
 }
 .boxes .box .text{
-<<<<<<< HEAD
-  white-space: nowrap;
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--text-color);
-=======
   display: block;
   margin-top: 10px;
   align-items: center;
@@ -481,7 +475,6 @@ body{
   color: var(--text-color);
   transition: var(--tran-03);
   animation: enterAnimation 0.5s forwards;
->>>>>>> 7e9ad6241ac63ab613fc7241989b81107bc5d1f8
 }
 .boxes .box .number{
   font-size: 40px;
@@ -578,11 +571,7 @@ background-color: var(--box4-color);
       min-width: 40px;
     }
   }
-<<<<<<< HEAD
-@media (max-width: 780px) {
-=======
 @media (max-width: 768px) {
->>>>>>> 7e9ad6241ac63ab613fc7241989b81107bc5d1f8
     .dash-content .boxes .box{
         width: calc(100% / 2 - 15px);
         margin-top: 15px;
@@ -591,10 +580,7 @@ background-color: var(--box4-color);
       opacity: 1;
       height: auto;
     }
-<<<<<<< HEAD
-=======
     
->>>>>>> 7e9ad6241ac63ab613fc7241989b81107bc5d1f8
 }
 @media (max-width: 560px) {
     .dash-content .boxes .box{
@@ -637,8 +623,6 @@ background-color: var(--box4-color);
         width: 100%;
     }
 }
-<<<<<<< HEAD
-=======
 
 
 /* .table{
@@ -651,4 +635,3 @@ background-color: var(--box4-color);
 .h2 {
   padding-top: 1000px;
 }
->>>>>>> 7e9ad6241ac63ab613fc7241989b81107bc5d1f8
