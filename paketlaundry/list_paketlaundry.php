@@ -210,69 +210,71 @@ include('../function.php');
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">List Paket Laundry</span>
                 </div>
-            </div>
-            <div class="card-body">
-                <!-- START: Button -->
-                <div class="button-group">
-                    <a href="../paketlaundry/add_paketlaundry.php" class="button-tambah">
-                        <i class="fas fa-plus fa-sm"></i> Tambah Data
-                    </a>
-                    <span>&nbsp;&nbsp;</span>
-                    <a href="../paketlaundry/cetakpaket.php" target="_blank" class="button-cetak">
-                        <i class="fas fa-download fa-sm"></i> Cetak File
-                    </a>
+                <div class="card-body">
+                    <!-- START: Button -->
+                    <div class="button-group">
+                        <a href="../paketlaundry/add_paketlaundry.php" class="button-tambah">
+                            <i class="fas fa-plus fa-sm"></i> Tambah Data
+                        </a>
+                        <span>&nbsp;&nbsp;</span>
+                        <a href="../paketlaundry/cetakpaket.php" target="_blank" class="button-cetak">
+                            <i class="fas fa-download fa-sm"></i> Cetak File
+                        </a>
+                    </div>
                 </div>
-
-                <!-- END: Button -->
             </div>
+            
+            <!--..-->
 
-            <!-- END: Button -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>ID Paket</th>
-                        <th>Nama Paket</th>
-                        <th>Harga Per Kilo</th>
-                        <th>Deskripsi Paket</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    //proses menampilkan data dari database:
-                    //siapkan query SQL
-                    $query = "SELECT * FROM paket_cuci";
-                    //eksekusi query
-                    $result = $conn->query($query);
-                    $no = 1;
-                    while ($data = $result->fetch(PDO::FETCH_ASSOC)) :
-                    ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $data['id_paket']; ?></td>
-                            <td><?php echo $data['paket']; ?></td>
-                            <td><?php echo $data['harga_kilo']; ?></td>
-                            <td class="description"><?php echo $data['deskripsi']; ?></td>
-                            <td>
-                                <a href="updatepaket.php?id_paket=<?php echo $data['id_paket']; ?>" class="btn btn-edit">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                                <form method="POST" action="../paketlaundry/hapuspaket.php" style="display: inline-block;">
-                                    <input type="hidden" name="id_paket" value="<?php echo $data['id_paket']; ?>">
-                                    <button type="submit" name="deletes" class="btn btn-hapus">
-                                        <i class="fas fa-trash"></i> Hapus
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-
+            <div class="database">
+                <div class="database-data">
+                    <div class="center">   
+                        <table id="dataTables" class="table table-hover">
+                            <thead>
+                                <tr style="text-align : center;">
+                                    <th>No</th>
+                                    <th>ID Paket</th>
+                                    <th>Nama Paket</th>
+                                    <th>Harga Per Kilo</th>
+                                    <th>Deskripsi Paket</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                //proses menampilkan data dari database:
+                                //siapkan query SQL
+                                $query = "SELECT * FROM paket_cuci";
+                                //eksekusi query
+                                $result = $conn->query($query);
+                                $no = 1;
+                                while ($data = $result->fetch(PDO::FETCH_ASSOC)) :
+                                ?>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $data['id_paket']; ?></td>
+                                        <td><?php echo $data['paket']; ?></td>
+                                        <td><?php echo $data['harga_kilo']; ?></td>
+                                        <td class="description"><?php echo $data['deskripsi']; ?></td>
+                                        <td>
+                                            <a href="updatepaket.php?id_paket=<?php echo $data['id_paket']; ?>" class="btn btn-edit">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <form method="POST" action="../paketlaundry/hapuspaket.php" style="display: inline-block;">
+                                                <input type="hidden" name="id_paket" value="<?php echo $data['id_paket']; ?>">
+                                                <button type="submit" name="deletes" class="btn btn-hapus">
+                                                    <i class="fas fa-trash"></i> Hapus
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-        </div>
-
     </section>
 
     <script src="../script.js"></script>

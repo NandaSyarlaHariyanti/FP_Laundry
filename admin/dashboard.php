@@ -1,7 +1,7 @@
 <?php
     require '../conn.php';
 
-    $query = "SELECT transaksi.id_transaksi, transaksi.tanggal, transaksi.id_pelanggan, transaksi.id_paket, transaksi.qty, transaksi.biaya, transaksi.bayar, transaksi.kembalian 
+    $query = "SELECT transaksi.id_transaksi, transaksi.tanggal , pelanggan.nama_pelanggan, paket_cuci.paket, transaksi.qty, transaksi.biaya, transaksi.bayar, transaksi.kembalian 
               FROM transaksi
               INNER JOIN pelanggan
               ON transaksi.id_pelanggan = pelanggan.id_pelanggan
@@ -39,8 +39,74 @@
     <link rel="stylesheet" href="styleadmin.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="icon" href="../binatoo.ico" type="image/x-icon">
     <title>BINATO (FP)</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 30px 40px;
+            width: 90%;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            max-width: auto;
+            text-align: center;
+        }
+        #action {
+            white-space: nowrap;
+
+        }
+
+        td.description {
+            max-width: 250px;
+            word-wrap: break-word;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #333;
+            margin-right: 5px;
+        }
+
+        .btn-edit {
+            background-color: transparent;
+            border-color: #ffc107;
+            color: #ffc107;
+        }
+
+        .btn-hapus {
+            background-color: transparent;
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+
+        .btn-edit:active,
+        .btn-edit:hover {
+            background-color: #ffc107;
+            color: #000;
+        }
+
+        .btn-hapus:active,
+        .btn-hapus:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }
+    </style>
 </head>
 
 <body>
@@ -147,35 +213,94 @@
                 <div class="boxes">
                     <div class="box box1">
                         <i class='bx bxs-user'></i>
-                        <span class="text">Jumlah Pelanggan</span>
+                        <span class="text"><center>Jumlah Pelanggan<center></span>
 						<span class="number"><?= numData('pelanggan'); ?></span>
                     </div>
                     <div class="box box2">
                         <i class='bx bxs-t-shirt'></i>
-                        <span class="text">Jumlah Paket Laundry</span>
+                        <span class="text"><center>Jumlah Paket Laundry<center></span>
                         <span class="number"><?= numData('paket_cuci'); ?></span>
                     </div>
                     <div class="box box3">
                         <i class='bx bxs-user-voice'></i>
-                        <span class="text">Jumlah Karyawan</span>
+                        <span class="text"><center>Jumlah Karyawan<center></span>
                         <span class="number"><?= numData('karyawan'); ?></span>
                     </div>                    
                     <div class="box box4">
                         <i class='bx bx-transfer'></i>
-                        <span class="text">Jumlah Transaksi</span>
+                        <span class="text"><center>Jumlah Transaksi<center></span>
                         <span class="number"><?= numData('transaksi'); ?></span>
                     </div>
                 </div>
             </div>
 
-            <div class="activity">
+            <div class="database">
                 <div class="title">
                     <i class="uil uil-clock-three"></i>
                     <span class="text">Recent Transactions</span>
                 </div>
 
-                <div class="activity-data">
-                    <!--isi-->
+                <div class="database-data">
+                    <div class="center">
+                        <table id="dataTables" class="table table-hover">
+                            <thead>
+                                <tr style="text-align: center;">
+                                    <th>No</th>
+                                    <th>Id Transaksi</th>
+                                    <th>Tanggal Transaksi</th>
+                                    <th>Nama Pelanggan</th>
+                                    <th>Nama Paket</th>
+                                    <th>Quantity</th>
+                                    <th>Biaya</th>
+                                    <th>Bayar</th>
+                                    <th>Kembalian</th>
+                                    <th>Keterangan</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+                                $result = $conn->query($query);
+                                ?>
+
+                                <?php $no = 1;
+                                while ($data = $result->fetch(PDO::FETCH_ASSOC)) : ?>
+                                    <tr>
+                                        <td style="text-align: center;"><?= $no++; ?></td>
+                                        <td style="text-align: center;"><?= $data['id_transaksi']; ?></td>
+                                        <td style="text-align: center;"><?= $data['tanggal']; ?></td>
+                                        <td style="text-align: center;"><?= $data['nama_pelanggan']; ?></td>
+                                        <td style="text-align: center;"><?= $data['paket']; ?></td>
+                                        <td style="text-align: center;"><?= $data['qty']; ?></td>
+                                        <td style="text-align: center;"><?= $data['biaya']; ?></td>
+                                        <td style="text-align: center;"><?= $data['bayar']; ?></td>
+                                        <td style="text-align: center;"><?= $data['kembalian']; ?></td>
+                                        <td style="text-align: center;">
+                                            <?php
+                                            if ($data['kembalian'] < 0) {
+                                                echo "<span class='keterangan-lunas'>Belum Lunas</span>";
+                                            } else {
+                                                echo "<span class='keterangan-belum-lunas'>Lunas</span>";
+                                            }
+                                            ?>
+                                        </td>
+                                        <td id="action">    
+                                            <a href="<?php echo "../transaksi/updatetransaksi.php?id_transaksi=" . $data['id_transaksi']; ?>" class="btn btn-edit">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <form method="POST" action="../transaksi/hapustransaksi.php" style="display: inline;">
+                                                <input type="hidden" name="id_transaksi" value="<?php echo $data['id_transaksi']; ?>">
+                                                <button type="submit" name="deletes" class="btn btn-hapus">
+                                                    <i class="fas fa-trash"></i> Hapus
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>                       
+                    </div>
                 </div>
             </div>
         </div>

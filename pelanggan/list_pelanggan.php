@@ -61,7 +61,10 @@ include('../function.php');
             max-width: auto;
             text-align: center;
         }
+        #action {
+            white-space: nowrap;
 
+        }
         td.description {
             max-width: 250px;
             word-wrap: break-word;
@@ -210,73 +213,72 @@ include('../function.php');
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">List Pelanggan</span>
                 </div>
-            </div>
-            <div class="card-body">
-                <!-- START: Button -->
-                <div class="button-group">
-                    <a href="../pelanggan/add_pelanggan.php" class="button-tambah">
-                        <i class="fas fa-plus fa-sm"></i> Tambah Data
-                    </a>
-                    <span>&nbsp;&nbsp;</span>
-                    <a href="../pelanggan/cetakPelanggan.php" target="_blank" class="button-cetak">
-                        <i class="fas fa-download fa-sm"></i> Cetak File
-                    </a>
+                <div class="card-body">
+                    <!-- START: Button -->
+                    <div class="button-group">
+                        <a href="../pelanggan/add_pelanggan.php" class="button-tambah">
+                            <i class="fas fa-plus fa-sm"></i> Tambah Data
+                        </a>
+                        <span>&nbsp;&nbsp;</span>
+                        <a href="../pelanggan/cetakPelanggan.php" target="_blank" class="button-cetak">
+                            <i class="fas fa-download fa-sm"></i> Cetak File
+                        </a>
+                    </div>
                 </div>
-
-                <!-- END: Button -->
             </div>
-
-            <!-- END: Button -->
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>ID Pelanggan</th>
-                        <th>Nama Pelanggan</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Alamat Pelanggan</th>
-                        <th>No. HP Pelanggan</th>
-                        <th colspan="2">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    //proses menampilkan data dari database:
-                    //siapkan query SQL
-                    $query = "SELECT * FROM pelanggan";
-                    //eksekusi query
-                    $result = $conn->query($query);
-                    $no = 1;
-                    while ($data = $result->fetch(PDO::FETCH_ASSOC)) :
-                    ?>
-                        <tr>
-                            <td><?php echo $no++; ?></td>
-                            <td><?php echo $data['id_pelanggan']; ?></td>
-                            <td><?php echo $data['nama_pelanggan']; ?></td>
-                            <td><?php echo $data['username']; ?></td>
-                            <td><?php echo $data['password']; ?></td>
-                            <td><?php echo $data['alamat_pelanggan']; ?></td>
-                            <td><?php echo $data['no_hp_pelanggan']; ?></td>
-                            <td>
-                                <a href="updatePelanggan.php?id_pelanggan=<?php echo $data['id_pelanggan']; ?>" class="btn btn-edit">
-                                    <i class="fas fa-edit"></i> Edit
-                                </a>
-                            </td>
-                            <td>    
-                                <form method="POST" action="../pelanggan/hapusPelanggan.php" style="display: inline-block;">
-                                    <input type="hidden" name="id_pelanggan" value="<?php echo $data['id_pelanggan']; ?>">
-                                    <button type="submit" name="deletes" class="btn btn-hapus">
-                                        <i class="fas fa-trash"></i> Hapus
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-                </tbody>
-            </table>
-
-        </div>
+        
+            <div class="database">
+                <div class="database-data">
+                    <div class="center">        
+                        <table id="dataTables" class="table table-hover">
+                            <thead>
+                                <tr style="text-align : center;">
+                                    <th>No</th>
+                                    <th>ID Pelanggan</th>
+                                    <th>Nama Pelanggan</th>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                    <th>Alamat Pelanggan</th>
+                                    <th>No. HP Pelanggan</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                //proses menampilkan data dari database:
+                                //siapkan query SQL
+                                $query = "SELECT * FROM pelanggan";
+                                //eksekusi query
+                                $result = $conn->query($query);
+                                $no = 1;
+                                while ($data = $result->fetch(PDO::FETCH_ASSOC)) :
+                                ?>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $data['id_pelanggan']; ?></td>
+                                        <td><?php echo $data['nama_pelanggan']; ?></td>
+                                        <td><?php echo $data['username']; ?></td>
+                                        <td><?php echo $data['password']; ?></td>
+                                        <td><?php echo $data['alamat_pelanggan']; ?></td>
+                                        <td><?php echo $data['no_hp_pelanggan']; ?></td>
+                                        <td id="action">
+                                            <a href="updatePelanggan.php?id_pelanggan=<?php echo $data['id_pelanggan']; ?>" class="btn btn-edit">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>   
+                                            <form method="POST" action="../pelanggan/hapusPelanggan.php" style="display: inline-block;">
+                                                <input type="hidden" name="id_pelanggan" value="<?php echo $data['id_pelanggan']; ?>">
+                                                <button type="submit" name="deletes" class="btn btn-hapus">
+                                                    <i class="fas fa-trash"></i> Hapus
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>
