@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,28 +21,30 @@
 
         .tagihan-button {
             padding: 10px 20px;
-            height: 100px;
+            height: 150px;
             width: 300px;
-            font-size: 40px;
-            border-radius: 5px;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 20px;
             background-color: #FF6E3C;
-            color: white;
+            color: black;
             border: none;
             cursor: pointer;
-            margin: 10px;
+            margin: 10px 30px;
         }
 
         .riwayat-button {
             padding: 10px 20px;
-            height: 100px;
+            height: 150px;
             width: 300px;
-            font-size: 40px;
-            border-radius: 5px;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 20px;
             background-color: #FFD74B;
-            color: white;
+            color: black;
             border: none;
             cursor: pointer;
-            margin: 10px;
+            margin: 10px 30px;
         }
 
         .tagihan-button:hover {
@@ -67,51 +70,54 @@
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 35px;
+            font-size: 35px;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <?php
-    session_start();
-    require_once('../conn.php');
+    <div class="container">
+        <?php
+        session_start();
+        require_once('../conn.php');
 
-    $username = "";
-    $name = "";
+        $username = "";
+        $name = "";
 
-    if (isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
 
-        try {
-            // Query ke database untuk mendapatkan nama pelanggan berdasarkan username
-            $query = "SELECT nama_pelanggan FROM pelanggan WHERE username = :username";
-            $statement = $conn->prepare($query);
-            $statement->bindParam(':username', $username);
-            $statement->execute();
-            $result = $statement->fetch(PDO::FETCH_ASSOC);
-            $name = $result['nama_pelanggan'];
-        } catch (PDOException $e) {
-            // Tangani kesalahan koneksi database
-            echo "Kesalahan: " . $e->getMessage();
+            try {
+                // Query ke database untuk mendapatkan nama pelanggan berdasarkan username
+                $query = "SELECT nama_pelanggan FROM pelanggan WHERE username = :username";
+                $statement = $conn->prepare($query);
+                $statement->bindParam(':username', $username);
+                $statement->execute();
+                $result = $statement->fetch(PDO::FETCH_ASSOC);
+                $name = $result['nama_pelanggan'];
+            } catch (PDOException $e) {
+                // Tangani kesalahan koneksi database
+                echo "Kesalahan: " . $e->getMessage();
+            }
         }
-    }
 
-    if (!empty($username)) {
-        echo "<h2>Hello, $name</h2>";
-    }
-    ?>
+        if (!empty($username)) {
+            echo "<h2>Hello, $name</h2>";
+        }
+        ?>
 
-    <div class="buttons-container">
-        <form method="get" action="tagihan.php">
-            <button class="tagihan-button" type="submit">Tagihan</button>
-        </form>
+        <div class="buttons-container">
+            <form method="get" action="tagihan.php">
+                <button class="tagihan-button" type="submit">Tagihan</button>
+            </form>
 
-        <form method="get" action="riwayattransaksi.php">
-            <button class="riwayat-button" type="submit">Riwayat</button>
-        </form>
-    </div>
+            <form method="get" action="riwayattransaksi.php">
+                <button class="riwayat-button" type="submit">Riwayat</button>
+            </form>
+        </div>
 
 </body>
+
 </html>
