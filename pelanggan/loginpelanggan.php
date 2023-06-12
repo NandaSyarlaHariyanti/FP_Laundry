@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../conn.php');
 
 $errorMessage = '';
@@ -8,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     try {
-        // Query ke database untuk memeriksa data login
+
         $query = "SELECT * FROM pelanggan WHERE username = :username AND password = :password";
         $statement = $conn->prepare($query);
         $statement->bindParam(':username', $username);
@@ -16,37 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statement->execute();
 
         if ($statement->rowCount() > 0) {
-            // Set cookie dengan nama "login" dan nilai "true" dengan masa berlaku 1 jam (3600 detik)
-            setcookie("login", "true", time() + 3600, '/');
-            // Redirect ke halaman selamat datang atau halaman berikutnya
-            echo "
-                <script>
-                    alert('Login Berhasil');
-                    document.location.href = '../pelanggan/home.php';
-                </script> 
-            ";
-            $query = "SELECT nama_pelanggan FROM pelanggan WHERE username = :username";
-            $statement = $conn->prepare($query);
-            $statement->bindParam(':username', $username);
-            $statement->execute();
-            $result = $statement->fetch(PDO::FETCH_ASSOC);
-            $name = $result['nama_pelanggan'];
 
-        header("Location: ../pelanggan/pelanggan.php?name=" . urlencode($name));
+            $_SESSION['username'] = $username;
+
+
+            header("Location: dashboardpelanggan.php");
             exit;
         } else {
             // Login gagal
-            echo "
-                <script>
-                    alert('Username atau password salah!');
-                    document.location.href = '../pelanggan/loginpelanggan.php';
-                </script> 
-            ";
-            exit;
+            $errorMessage = 'Username atau password salah!';
         }
     } catch (PDOException $e) {
         // Tangani kesalahan koneksi database
-        echo "Kesalahan: " . $e->getMessage();
+        $errorMessage = 'Kesalahan: ' . $e->getMessage();
     }
 }
 ?>
@@ -61,10 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" href="../binatoo.ico" type="image/x-icon">
     <title>Form Login Pelanggan</title>
     <link rel="stylesheet" href="../admin/login.css">
-
-    <style>
-    </style>
-
 </head>
 
 <body>
