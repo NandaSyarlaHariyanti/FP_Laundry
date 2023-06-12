@@ -217,6 +217,7 @@ include('../function.php');
                 </div>
                 <div class="card-body">
                 <!-- START: Button -->
+<<<<<<< HEAD
                     <div class="button-group">
                         <a href="../karyawan/add_karyawan.php" type="button" class="button-tambah">
                             <i class="fas fa-plus fa-sm">
@@ -225,10 +226,21 @@ include('../function.php');
                         <span>&nbsp;&nbsp;</span>
                         <a href="../karyawan/cetakkaryawan.php" target="_blank" type="button" class="button-cetak">
                             <i class="fas fa-download fa-sm"></i> Cetak File
+=======
+                <div class="button-group">
+                    <a href="../karyawan/add_karyawan.php" type="button" class="button-tambah">
+                        <i class="fas fa-plus fa-sm">
+                        </i> Tambah Data
+                    </a>
+                    <span>&nbsp;&nbsp;</span>
+                    <a href="../karyawan/cetakkaryawan.php" target="_blank" type="button" class="button-cetak">
+                        <i class="fas fa-download fa-sm"></i> Cetak File
+>>>>>>> 7e9ad6241ac63ab613fc7241989b81107bc5d1f8
                         </a>
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
                 <!-- END: Button -->
             <div class="database">
                 <div class="database-data">        
@@ -246,6 +258,26 @@ include('../function.php');
                                     <th>Role</th>
                                     <th>Action</th>
                                 </tr>
+=======
+            
+            <div class="database">
+                <div class="database-data">
+                    <div class="center">     
+                    <table id="dataTables" class="table table-hover">
+                    <thead>
+                        <tr style="text-align: center;">
+                            <th>No</th>
+                            <th>ID Karyawan</th>
+                            <th>Nama Karyawan</th>
+                            <th>Email</th>
+                            <th>No Hp</th>
+                            <th>Alamat</th>
+                            <th>Catatan</th>
+                            <th>Foto</th>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </tr>
+>>>>>>> 7e9ad6241ac63ab613fc7241989b81107bc5d1f8
 
                             </thead>
                             <tbody>
@@ -291,6 +323,12 @@ include('../function.php');
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+        </div>
+        </div>
+
+>>>>>>> 7e9ad6241ac63ab613fc7241989b81107bc5d1f8
     </section>
 
     <script src="../script.js"></script>
