@@ -15,6 +15,7 @@ include('../function.php');
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="../binatoo.ico" type="image/x-icon">
     <title>BINATO (FP)</title>
     <style>
         .card-body {
@@ -61,12 +62,13 @@ include('../function.php');
             max-width: auto;
             text-align: center;
         }
+
         #action {
             white-space: nowrap;
 
         }
+
         td.description {
-            max-width: 250px;
             word-wrap: break-word;
             text-align: left;
         }
@@ -124,13 +126,13 @@ include('../function.php');
         <ul class="nav-links">
             <li>
                 <div class="iocn-link">
-                <a href="<?php echo "../admin/dashboard.php"; ?>" >
-                    <i class='bx bxs-home-smile'></i>
-                    <span class="link_name">Home</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="<?php echo "../admin/dashboard.php"; ?>">Home</a></li>
-                </ul>
+                    <a href="<?php echo "../admin/dashboard.php"; ?>">
+                        <i class='bx bxs-home-smile'></i>
+                        <span class="link_name">Home</span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="<?php echo "../admin/dashboard.php"; ?>">Home</a></li>
+                    </ul>
             </li>
             <li>
                 <div class="iocn-link">
@@ -226,12 +228,12 @@ include('../function.php');
                     </div>
                 </div>
             </div>
-            
+
             <!--..-->
 
             <div class="database">
                 <div class="database-data">
-                    <div class="center">   
+                    <div class="center">
                         <table id="dataTables" class="table table-hover">
                             <thead>
                                 <tr style="text-align : center;">

@@ -5,9 +5,10 @@ include('../function.php');
 
 <!DOCTYPE html>
 <html lang="en">
-
+<link rel="icon" href="../binatoo.ico" type="image/x-icon">
+<title>Cetak Paket</title>
+    
 <head>
-    <title>BINATO (FP)</title>
     <style>
         table {
             border-collapse: collapse;
