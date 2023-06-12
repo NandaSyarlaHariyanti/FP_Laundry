@@ -7,15 +7,15 @@ if (isset($_POST["submit"])) {
     if (addPelanggan($_POST) > 0) {
         echo "
             <script>
-                alert('Data Berhasil Ditambahkan');
-                document.location.href = '../paketlaundry/list_paketlaundry.php';
+                alert('Data Tidak Berhasil Ditambahkan');
+                document.location.href = 'list_pelanggan.php';
             </script> 
         ";
     } else {
         echo "
             <script>
                 alert('Data Berhasil Ditambahkan');
-                document.location.href = '../paketlaundry/list_paketlaundry.php';
+                document.location.href = 'list_pelanggan.php';
             </script> 
     ";
     }
@@ -120,10 +120,6 @@ if (isset($_POST["submit"])) {
         <div class="form-container">
             <h1>Tambah Data Pelanggan</h1>
             <form method="post" enctype="multipart/form-data">
-                <div>
-                    <label for="id_paket">ID Pelanggan</label>
-                    <input type="text" maxlength="50" class="form-control" name="id_pelanggan" id="id_pelanggan" placeholder="Masukkan id pelanggan" required>
-                </div>
                 <div>
                     <label for="nama_pelanggan">Nama Pelanggan</label>
                     <input type="text" maxlength="50" class="form-control" name="nama_pelanggan" id="nama_pelanggan" placeholder="Masukkan nama pelanggan" required>

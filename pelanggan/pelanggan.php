@@ -77,7 +77,7 @@
     <a href="tagihan.php?name=<?= urlencode($name) ?>" class="box2">
         Tagihan
     </a>
-    <a href="riwayat.php?name=<?= urlencode($name) ?>" class="box3">
+    <a href="riwayattransaksi.php?name=<?= urlencode($name) ?>" class="box3">
         Riwayat
     </a>
   </div>

@@ -232,11 +232,11 @@ include('../conn.php');
                 <div class="card-body">
                     <!-- START: Button -->
                     <div class="button-group">
-                        <a href="../pelanggan/add_pelanggan.php" class="button-tambah">
+                        <a href="../transaksi/add_transaksi.php" class="button-tambah">
                             <i class="fas fa-plus fa-sm"></i> Tambah Data
                         </a>
                         <span>&nbsp;&nbsp;</span>
-                        <a href="../pelanggan/cetakPelanggan.php" target="_blank" class="button-cetak">
+                        <a href="../transaksi/cetakTransaksi.php" target="_blank" class="button-cetak">
                             <i class="fas fa-download fa-sm"></i> Cetak File
                         </a>
                     </div>

@@ -2,7 +2,6 @@
     include('../conn.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $id_transaksi = $_POST['id_transaksi'];
         $tanggal = $_POST['tanggal'];
         $qty = $_POST['qty'];
         $biaya = $_POST['biaya'];
@@ -11,12 +10,23 @@
         $id_pelanggan = $_POST['id_pelanggan'];
         $id_paket = $_POST['id_paket'];
 
+         // Mendapatkan ID terakhir
+        $lastIdQuery = "SELECT MAX(SUBSTRING(id_transaksi, 4)) AS max_id FROM transaksi";
+        $stmt = $conn->prepare($lastIdQuery);
+        $stmt->execute();
+        $lastIdRow = $stmt->fetch(PDO::FETCH_ASSOC);
+        $lastId = $lastIdRow['max_id'];
+        $newIdNumber = ($lastId !== null) ? intval($lastId) + 1 : 1;
+
+        // Menghasilkan ID baru dengan kombinasi karakter dan angka
+        $newId = 'TRS' . str_pad($newIdNumber, 3, '0', STR_PAD_LEFT);
+
         // Menyiapkan pernyataan (prepared statement) untuk kueri INSERT
         $query = $conn->prepare("INSERT INTO transaksi (id_transaksi, id_pelanggan, id_paket, tanggal, qty, biaya, bayar, kembalian) 
                                 VALUES (:id_transaksi, :id_pelanggan, :id_paket, :tanggal, :qty, :biaya, :bayar, :kembalian)");
 
-        // Mengikat nilai-nilai parameter ke pernyataan
-        $query->bindParam(':id_transaksi', $id_transaksi);
+     // Mengikat nilai-nilai parameter ke pernyataan
+        $query->bindParam(':id_transaksi', $newId);
         $query->bindParam(':id_pelanggan', $id_pelanggan);
         $query->bindParam(':id_paket', $id_paket);
         $query->bindParam(':tanggal', $tanggal);
@@ -25,6 +35,9 @@
         $query->bindParam(':bayar', $bayar);
         $query->bindParam(':kembalian', $kembalian);
 
+            // Mengubah auto increment pada kolom id_pelanggan
+        $alterQuery = "ALTER TABLE pelanggan AUTO_INCREMENT = " . ($newIdNumber + 1);
+        $conn->query($alterQuery);
         // Mengeksekusi pernyataan (prepared statement)
         if ($query->execute()) {
             echo "
@@ -70,10 +83,6 @@
             <h2 class="form-title">Tambah Data Transaksi</h2>
             <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <!-- Form fields go here -->
-                <div class="form-group">
-                    <label for="id_transaksi">ID Transaksi</label>
-                    <input type="text" maxlength="50" name="id_transaksi" id="id_transaksi" placeholder="Masukkan ID Transaksi" required autofocus>
-                </div>
                 <div class="form-group">
                     <label for="id_pelanggan">Nama Pelanggan</label>
                     <select name="id_pelanggan" placeholder="Pilih Nama Pelanggan" required autofocus>

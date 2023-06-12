@@ -14,7 +14,7 @@ if (isset($_POST["submit"])) {
     } else {
         echo "
             <script>
-                alert('Data Berhasil Ditambahkan');
+                alert('Data Tidak Berhasil Ditambahkan');
                 document.location.href = '../paketlaundry/list_paketlaundry.php';
             </script> 
     ";
@@ -119,10 +119,6 @@ if (isset($_POST["submit"])) {
         <div class="form-container">
             <h1>Tambah Data Paket Laundry</h1>
             <form method="post" enctype="multipart/form-data">
-                <div>
-                    <label for="id_paket">ID Paket Laundry</label>
-                    <input type="text" maxlength="50" class="form-control" name="id_paket" id="id_paket" placeholder="Masukkan id paket laundry" required>
-                </div>
                 <div>
                     <label for="paket">Nama Paket</label>
                     <input type="text" maxlength="50" class="form-control" name="paket" id="paket" placeholder="Masukkan nama paket" required>
