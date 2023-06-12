@@ -1,3 +1,33 @@
+<?php
+    require '../conn.php';
+
+    $query = "SELECT transaksi.id_transaksi, transaksi.tanggal, transaksi.id_pelanggan, transaksi.id_paket, transaksi.qty, transaksi.biaya, transaksi.bayar, transaksi.kembalian 
+              FROM transaksi
+              INNER JOIN pelanggan
+              ON transaksi.id_pelanggan = pelanggan.id_pelanggan
+              INNER JOIN paket_cuci
+              ON transaksi.id_paket = paket_cuci.id_paket
+              ORDER BY transaksi.id_transaksi DESC LIMIT 5";
+    
+    // Menampilkan Jumlah Data ( Tabel )
+    function numData($table) {
+        global $conn;
+        $stmt = $conn->query("SELECT * FROM $table");
+        return $stmt->rowCount();
+    }
+    
+    // Menampilkan Jumlah Data ( Query )
+    function numQueryData($query) {
+        global $conn;
+        $stmt = $conn->query($query);
+        return $stmt->rowCount();
+    }
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,19 +146,24 @@
 
                 <div class="boxes">
                     <div class="box box1">
-                        <i class="uil uil-user"></i>
+                        <i class='bx bxs-user'></i>
                         <span class="text">Jumlah Pelanggan</span>
-                        <span class="number">27</span>
+						<span class="number"><?= numData('pelanggan'); ?></span>
                     </div>
                     <div class="box box2">
-                        <i class="uil uil-comments"></i>
-                        <span class="text">Jumlah Paket Cuci</span>
-                        <span class="number">8</span>
+                        <i class='bx bxs-t-shirt'></i>
+                        <span class="text">Jumlah Paket Laundry</span>
+                        <span class="number"><?= numData('paket_cuci'); ?></span>
                     </div>
                     <div class="box box3">
-                        <i class="uil uil-share"></i>
+                        <i class='bx bxs-user-voice'></i>
                         <span class="text">Jumlah Karyawan</span>
-                        <span class="number">12</span>
+                        <span class="number"><?= numData('karyawan'); ?></span>
+                    </div>                    
+                    <div class="box box4">
+                        <i class='bx bx-transfer'></i>
+                        <span class="text">Jumlah Transaksi</span>
+                        <span class="number"><?= numData('transaksi'); ?></span>
                     </div>
                 </div>
             </div>
