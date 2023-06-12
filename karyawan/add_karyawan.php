@@ -2,7 +2,6 @@
 include('../conn.php');
 
 if (isset($_POST['submit'])) {
-    $id = addslashes($_POST['id_karyawan']);
     $nama = addslashes($_POST['nama_karyawan']);
     $email = stripslashes($_POST['email']);
     $nohp = stripslashes($_POST['no_hp']);
@@ -12,15 +11,15 @@ if (isset($_POST['submit'])) {
     $image_size = $_FILES['image']['size'];
     $role = "Karyawan";
 
-    $checkQuery = "SELECT * FROM karyawan WHERE id_karyawan = :id";
-    $checkStmt = $conn->prepare($checkQuery);
-    $checkStmt->bindParam(':id', $id);
-    $checkStmt->execute();
+    $lastIdQuery = "SELECT id_karyawan FROM karyawan ORDER BY id_karyawan DESC LIMIT 1";
+    $stmt = $conn->prepare($lastIdQuery);
+    $stmt->execute();
+    $lastIdRow = $stmt->fetch(PDO::FETCH_ASSOC);
+    $lastId = $lastIdRow ? $lastIdRow['id_karyawan'] : 0;
 
-    if ($checkStmt->rowCount() > 0) {
-        header("location:add_karyawan.php?pesan=exists");
-        exit();
-    }
+    // Membuat ID baru dengan kombinasi karakter dan angka
+  // $prefix = 'KYW';
+   $newId = $lastId + 1;
 
     if ($image_size > 2097152) {
         header("location:add_karyawan.php?pesan=size");
@@ -40,7 +39,7 @@ if (isset($_POST['submit'])) {
 
             $query = "INSERT INTO karyawan (id_karyawan, nama_karyawan, email, no_hp, alamat, catatan, image, role) VALUES (:id, :nama, :email, :nohp, :alamat, :catatan, :image, :role)";
             $stmt = $conn->prepare($query);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id', $newId);
             $stmt->bindParam(':nama', $nama);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':nohp', $nohp);
@@ -168,10 +167,6 @@ if (isset($_POST['submit'])) {
                 <div>
                     <label for="image">Image</label>
                     <input type="file" class="form-control" name="image" required>
-                </div>
-                <div>
-                    <label for="id">ID Karyawan</label>
-                    <input type="text" maxlength="30" class="form-control" name="id_karyawan" placeholder="id karyawan" required>
                 </div>
                 <div>
                     <label for="email">Email</label>
