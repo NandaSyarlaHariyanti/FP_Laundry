@@ -75,22 +75,36 @@
 
 <div class="container">
     <?php
-        session_start(); 
+    session_start();
+    require_once('../conn.php');
 
-        $username = ""; 
-        $name = ""; 
+    $username = "";
+    $name = "";
 
-        if (isset($_SESSION['username'])) {
-            $username = $_SESSION['username'];
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+
+        try {
+            // Query ke database untuk mendapatkan nama pelanggan berdasarkan username
+            $query = "SELECT nama_pelanggan FROM pelanggan WHERE username = :username";
+            $statement = $conn->prepare($query);
+            $statement->bindParam(':username', $username);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $name = $result['nama_pelanggan'];
+        } catch (PDOException $e) {
+            // Tangani kesalahan koneksi database
+            echo "Kesalahan: " . $e->getMessage();
         }
+    }
 
-        if (!empty($username)) {
-            echo "<h2>Hello, $name</h2>";
-        }
+    if (!empty($username)) {
+        echo "<h2>Hello, $name</h2>";
+    }
     ?>
 
     <div class="buttons-container">
-        <form method="get" action="transaksi.php">
+        <form method="get" action="tagihan.php">
             <button class="tagihan-button" type="submit">Tagihan</button>
         </form>
 
@@ -98,7 +112,6 @@
             <button class="riwayat-button" type="submit">Riwayat</button>
         </form>
     </div>
-</div>
 
 </body>
 </html>
