@@ -104,7 +104,7 @@
         }
 
         if (!empty($username)) {
-            echo "<h2>Hello, $name</h2>";
+            echo "<h2>Hello, $name !</h2>";
         }
         ?>
 
