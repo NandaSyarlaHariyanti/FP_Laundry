@@ -18,8 +18,9 @@
     --box1-color: #4DA3FF;
     --box2-color: #FFE6AC;
     --box3-color: #E7D1FC;
+    --box4-color: #35918c;
     --title-icon-color: #fff;
-    
+   
 
     --tran-05: all 0.5s ease;
     --tran-03: all 0.3s ease;
@@ -335,7 +336,7 @@ body{
   width: 100%;
   margin: 0 20px;
 }
-.top .search-box input{
+.top .search-box form{
   height: 100%;
   width: 100%;
   outline: none;
@@ -345,6 +346,17 @@ body{
   font-size: 18px;
   padding: 0 15px;
 }
+.top .search-box input{
+  position: absolute;
+    top: 3.1px;
+    width: 90%;
+    height: 85%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    background: transparent
+}
+
 .top .search-box .bx-search{
   position: absolute;
   height: 40px;
@@ -359,6 +371,25 @@ body{
   color: #fff;
   font-size: 22px;
   transition: all 0.4 ease;
+}
+.clear {
+  color: #444546;
+  position: absolute;
+  top: 37%;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 15px;
+  right: 70px;
+  background: transparent;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.5;
+  z-index: 1000;
+}
+.clear:hover 
+{
+    opacity: 1;
 }
 .dashboard .top .profile-details{
   display: flex;
@@ -415,68 +446,77 @@ body{
     color: var(--text-color);
     margin-left: 10px;
 }
+
 .dash-content .boxes{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 .dash-content .boxes .box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 12px;
-    width: calc(100% / 3 - 15px);
-    padding: 15px 20px;
-    background-color: var(--box1-color);
-    transition: var(--tran-05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  width: calc(100% / 4 - 10px);
+  padding: 15px 20px;
+  background-color: var(--box1-color);
+  transition: var(--tran-05);
 }
 .boxes .box i{
-    font-size: 35px;
-    color: var(--text-color);
+  font-size: 35px;
+  color: var(--text-color);
 }
 .boxes .box .text{
-    white-space: nowrap;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--text-color);
+  display: block;
+  margin-top: 10px;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: var(--tran-03);
+  animation: enterAnimation 0.5s forwards;
 }
 .boxes .box .number{
-    font-size: 40px;
-    font-weight: 500;
-    color: var(--text-color);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--text-color);
 }
 .boxes .box.box2{
-    background-color: var(--box2-color);
+  background-color: var(--box2-color);
 }
 .boxes .box.box3{
-    background-color: var(--box3-color);
+background-color: var(--box3-color);
 }
-.dash-content .activity .activity-data{
+.boxes .box.box4{
+background-color: var(--box4-color);
+}
+
+.dash-content .database .database-data{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+
 }
-.activity .activity-data{
+.database .database-data{
     display: flex;
 }
-.activity-data .data{
-    display: flex;
-    flex-direction: column;
-    margin: 0 15px;
+
+@keyframes enterAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.activity-data .data-title{
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text-color);
+
+@media (max-width: 3000px) {
+  .database .database-data{
+    overflow-X: scroll;
 }
-.activity-data .data .data-list{
-    font-size: 18px;
-    font-weight: 400;
-    margin-top: 20px;
-    white-space: nowrap;
-    color: var(--text-color);
 }
 
 @media (max-width: 1000px) {
@@ -518,9 +558,7 @@ body{
         left: 250px;
         width: calc(100% - 250px);
     }
-    .activity .activity-data{
-        overflow-X: scroll;
-    }
+
 }
 
 @media (max-width: 700px) {
@@ -534,11 +572,20 @@ body{
       min-width: 40px;
     }
   }
-
-@media (max-width: 780px) {
+@media (max-width: 768px) {
     .dash-content .boxes .box{
         width: calc(100% / 2 - 15px);
         margin-top: 15px;
+    }
+    .boxes .box.text {
+      opacity: 1;
+      height: auto;
+    }
+    
+}
+@media (max-width: 560px) {
+    .dash-content .boxes .box{
+        width: 100% ;
     }
 }
 
@@ -547,11 +594,8 @@ body{
     display: none;
   }
 }
-@media (max-width: 560px) {
-    .dash-content .boxes .box{
-        width: 100% ;
-    }
-}
+
+
 @media (max-width: 400px) {
     .sidebar.close .nav-links li .sub-menu{
         display: none;
@@ -580,6 +624,7 @@ body{
         width: 100%;
     }
 }
+
 
 /* .table{
     margin-top: 100px;
