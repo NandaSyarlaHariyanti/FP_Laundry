@@ -92,7 +92,8 @@ include('../conn.php');
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #789EA2;
+
         }
 
         .btn {

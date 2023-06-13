@@ -122,7 +122,7 @@
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #789EA2;
         }
 
         .btn {
@@ -273,8 +273,8 @@
         <div class="dash-content">
             <div class="overview">
                 <div class="title">
-                    <i class="uil uil-tachometer-fast-alt"></i>
-                    <span class="text">Home</span>
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
                 </div>
 
                 <div class="boxes">
