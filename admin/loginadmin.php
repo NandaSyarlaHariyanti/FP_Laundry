@@ -74,10 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="POST" action="loginadmin.php">
-        <h2>Login</h2>
+        <h2>&ensp;&ensp;Login&ensp;&ensp;</h2>
         <input type="text" id="username" name="username" placeholder="Username" required><br><br>
         <input type="password" id="password" name="password" placeholder="Password" required><br><br>
-        <input type="submit" name="submit" value="Login">
+        <input type="submit" name="submit" value=" Log in ">
         <a href="../index2.php" class="btn-back">Kembali</a>
     </form>
 </body>

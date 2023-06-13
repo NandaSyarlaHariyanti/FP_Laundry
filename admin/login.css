@@ -9,6 +9,7 @@ body {
 
 h2 {
   text-align: center;
+  padding: 0 5px;
 }
 
 form {
@@ -45,7 +46,7 @@ input[type="password"] {
 input[type="submit"] {
   display: block;
   margin: 0 auto;
-  width: 100px;
+  width: 120px;
   padding: 10px;
   background-color: #45a049;
   color: #000;

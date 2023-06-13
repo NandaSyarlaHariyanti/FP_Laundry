@@ -577,6 +577,7 @@ background-color: var(--box4-color);
   }
 }
 
+
 @media (max-width: 3000px) {
   .database .database-data{
     overflow-X: scroll;
@@ -695,3 +696,4 @@ background-color: var(--box4-color);
         width: 100%;
     }
 }
+

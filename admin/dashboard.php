@@ -14,6 +14,8 @@
         global $conn;
         $stmt = $conn->query("SELECT * FROM $table");
         return $stmt->rowCount();
+
+      
     }
     
     // Menampilkan Jumlah Data ( Query )
@@ -259,9 +261,7 @@
                 <span class="admin_name">Admin</span>
                 <i class="bx bx-chevron-down"></i>
                 <div class="dropdown">
-                    <a href="#">
-                        <i class="fas fa-user"></i> Profile
-                    </a>
+                    
                     <a href="?logout=true" id="logout">
                         <i class="fas fa-sign-out-alt"></i> Log Out
                     </a>

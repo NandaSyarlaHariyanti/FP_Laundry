@@ -42,15 +42,21 @@ body {
 
 .first-button {
     background-color: #394867;
+    padding: 20px 40px;
+    border-radius: 30px;
 }
 .second-button {
     background-color: #394867;
+    padding: 20px 40px;
+    border-radius: 30px;
 }
 
 .admin {
     margin-bottom: 20px;
 }
-
+.admin a{
+    font-size:20px;
+}
 .tombol {
     margin-top: 40px;
 }
