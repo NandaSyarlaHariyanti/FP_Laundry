@@ -84,7 +84,7 @@ CREATE TABLE `pelanggan` (
   `id_pelanggan` varchar(10) NOT NULL,
   `nama_pelanggan` varchar(100) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(5) NOT NULL,
+  `password` varchar(25) NOT NULL,
   `alamat_pelanggan` varchar(255) NOT NULL,
   `no_hp_pelanggan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

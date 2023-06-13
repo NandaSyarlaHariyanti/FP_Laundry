@@ -3,14 +3,37 @@ require_once('../conn.php');
 
 $errorMessage = '';
 
+function generateRandomPassword() {
+    $length = 10;
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $password = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        $index = random_int(0, strlen($characters) - 1);
+        $password .= $characters[$index];
+    }
+
+    return $password;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
     if ($username === 'admin' && $password === '12345') {
-        // Set cookie dengan nama "login" dan nilai "true" dengan masa berlaku 1 jam (3600 detik)
-        setcookie("login", "true", time() + 3600, '/');
-        // Redirect ke halaman selamat datang atau halaman berikutnya
+        $randomPassword = generateRandomPassword();
+        $hashedPassword = password_hash($randomPassword, PASSWORD_DEFAULT);
+    
+        // Store the hashed password in the database
+        $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+        $stmt->bindParam(":username", $username);
+        $stmt->bindParam(":password", $hashedPassword);
+        $stmt->execute();
+    
+        // Set cookie with the username
+        setcookie("username", $username, time() + 3600, '/');
+    
+        // Redirect to the welcome or next page
         echo "
             <script>
                 alert('Login Berhasil');

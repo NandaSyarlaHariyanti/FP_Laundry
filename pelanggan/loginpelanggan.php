@@ -9,20 +9,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     try {
-
-        $query = "SELECT * FROM pelanggan WHERE username = :username AND password = :password";
+        $query = "SELECT * FROM pelanggan WHERE username = :username";
         $statement = $conn->prepare($query);
         $statement->bindParam(':username', $username);
-        $statement->bindParam(':password', $password);
         $statement->execute();
 
         if ($statement->rowCount() > 0) {
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $storedPassword = $row['password'];
 
-            $_SESSION['username'] = $username;
-
-
-            header("Location: dashboardpelanggan.php");
-            exit;
+            // Memeriksa kecocokan password
+            if (password_verify($password, $storedPassword)) {
+                $_SESSION['username'] = $username;
+                header("Location: dashboardpelanggan.php");
+                exit;
+            } else {
+                // Login gagal
+                $errorMessage = 'Username atau password salah!';
+            }
         } else {
             // Login gagal
             $errorMessage = 'Username atau password salah!';

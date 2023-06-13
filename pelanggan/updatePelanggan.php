@@ -9,8 +9,25 @@ $status->bindParam(':id_pelanggan', $id_pelanggan);
 $status->execute();
 $data = $status->fetch();
 
+// Simpan password default dalam variabel terpisah
+$password_default = $data['password'];
+
 if (isset($_POST["submit"])) {
-    if (updatePelanggan($_POST) > 0) {
+    // Jika password diubah, gunakan nilai yang diinputkan
+    // Jika password tidak diubah, gunakan password default
+    $password = (!empty($_POST["password"])) ? $_POST["password"] : $password_default;
+
+    // Buat array data yang akan diupdate
+    $updateData = array(
+        "id_pelanggan" => $id_pelanggan,
+        "nama_pelanggan" => $_POST["nama_pelanggan"],
+        "username" => $_POST["username"],
+        "password" => $password,
+        "alamat_pelanggan" => $_POST["alamat_pelanggan"],
+        "no_hp_pelanggan" => $_POST["no_hp_pelanggan"]
+    );
+
+    if (updatePelanggan($updateData) > 0) {
         echo "
             <script>
                 alert('Data Berhasil Diubah');
@@ -26,7 +43,10 @@ if (isset($_POST["submit"])) {
         ";
     }
 }
+// Tentukan nilai awal untuk input password
+$passwordInput = $password_default;
 ?>
+
 
 <head>
     <meta charset="UTF-8">
@@ -122,7 +142,7 @@ if (isset($_POST["submit"])) {
                 </div>
                 <div>
                     <label for="password">Password</label>
-                    <input type="text" maxlength="30" class="form-control" name="password" id="password" value="<?= $data['password']; ?>" required>
+                    <input type="text" maxlength="30" class="form-control" name="password" id="password" value="" placeholder="Masukkan password baru..."required>
                 </div>
                 <div>
                     <label for="alamat_pelanggan">Alamat Pelanggan</label>
