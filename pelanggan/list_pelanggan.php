@@ -1,6 +1,26 @@
 <?php
 include('../conn.php');
 include('../function.php');
+
+   // Logout
+   if (isset($_GET['logout']) && $_GET['logout'] === 'true') {
+    // Tampilkan konfirmasi alert sebelum logout
+    echo "<script>
+        var confirmLogout = confirm('Anda yakin untuk logout?');
+        if (confirmLogout) {
+            // Hapus cookie dengan nama 'login'
+            document.cookie = 'login=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            // Redirect ke halaman login atau halaman lain yang sesuai
+            alert('Logout Berhasil');
+            window.location.href = '../admin/loginadmin.php';
+        } else {
+            // Batal logout
+            alert('Logout Dibatalkan');
+            window.location.href = 'list_pelanggan.php';
+        }
+    </script>";
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -203,7 +223,15 @@ include('../function.php');
             </div>
             <div class="profile-details">
                 <span class="admin_name">Admin</span>
-                <i class='bx bx-chevron-down'></i>
+                <i class="bx bx-chevron-down"></i>
+                <div class="dropdown">
+                    <a href="#">
+                        <i class="fas fa-user"></i> Profile
+                    </a>
+                    <a href="?logout=true" id="logout">
+                        <i class="fas fa-sign-out-alt"></i> Log Out
+                    </a>
+                </div>
             </div>
         </div>
 
