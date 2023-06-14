@@ -31,11 +31,10 @@ SET time_zone = "+00:00";
 -- Struktur dari tabel `karyawan`
 --
 
-CREATE TABLE `users` (
-  `username` VARCHAR(25) NOT NULL,
-  `password` VARCHAR(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+	CREATE TABLE `users` (
+ `username` varchar(10) NOT NULL,
+ `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 
 CREATE TABLE `karyawan` (
   `id_karyawan` int(11) NOT NULL,
@@ -88,7 +87,7 @@ CREATE TABLE `pelanggan` (
   `id_pelanggan` varchar(10) NOT NULL,
   `nama_pelanggan` varchar(100) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `alamat_pelanggan` varchar(255) NOT NULL,
   `no_hp_pelanggan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
