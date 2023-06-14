@@ -7,7 +7,6 @@ function addPelanggan($data)
 {
     global $conn;
 
-    $id_pelanggan =  htmlspecialchars($data["id_pelanggan"]);
     $nama_pelanggan =  htmlspecialchars($data["nama_pelanggan"]);
     $username =  htmlspecialchars($data["username"]);
     $password =  htmlspecialchars($data["password"]);
