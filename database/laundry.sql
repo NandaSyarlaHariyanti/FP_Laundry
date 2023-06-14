@@ -118,7 +118,7 @@ INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `username`, `password
 ('PLG022', 'Rizky Aidil', 'rizkyaidil', '12345', 'Mangkai Baru Dusun IV', '080011113333'),
 ('PLG023', 'Siti Kharisma Fitriana', 'sitikharisma', '12345', 'Mangkai Lama', '080011114444'),
 ('PLG024', 'Sri Romadhona', 'sriromadhona', '12345', 'Bukit Lima', '080011115555'),
-('PLG025', 'Sultan Nico Nur', 'Arsy', 'sultannico', '12345', 'Mangkai Lama', '080011116666'),
+('PLG025', 'Sultan Nico Nur', 'sultannico', '12345', 'Mangkai Lama', '080011116666'),
 ('PLG026', 'Tri Ayuni', 'triayuni', '12345', '-', '080011117777'),
 ('PLG027', 'Wahyu Fitrah', 'wahyufitrah', '12345', 'Dosin', '080011118888'),
 ('PLG028', 'Wendy Riswana', 'wendyriswana', '12345', '-', '080011119999'),

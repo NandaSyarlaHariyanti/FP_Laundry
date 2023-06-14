@@ -15,7 +15,7 @@
 
         <div class="tombol">
             <div class="admin">
-                <a href="admin/loginadmin.php" class="my-button first-button">&nbsp;&nbsp; Admin &nbsp;&nbsp; </a>
+                <a href="admin/loginadmin.php" class="my-button first-button">&nbsp;&nbsp;Admin &nbsp;&nbsp; </a>
             </div>
             <div class="pelanggan">
                 <a href="pelanggan/loginpelanggan.php" class="my-button second-button">Pelanggan</a>

@@ -26,9 +26,15 @@ body {
 }
 
 .btn-container {
-    margin-top: 40px;
+    margin-top: 60px;
 }
 
+#login{
+    letter-spacing: 4px;
+    font-size: 20px;
+    padding: 20px 50px;
+    
+}
 .my-button {
     display: inline-block;
     padding: 10px 20px;
@@ -39,7 +45,10 @@ body {
     cursor: pointer;
     text-decoration: none;
 }
+.my-button:hover {
+    background: #14274e;
 
+}
 .first-button {
     background-color: #394867;
     padding: 20px 40px;
@@ -54,9 +63,9 @@ body {
 .admin {
     margin-bottom: 20px;
 }
-.admin a{
-    font-size:20px;
-}
 .tombol {
     margin-top: 40px;
+}
+.tombol a{
+    font-size: 20px;
 }
