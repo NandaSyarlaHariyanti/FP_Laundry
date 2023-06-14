@@ -6,8 +6,6 @@ require '../conn.php';
 function addpaket($data)
 {
     global $conn;
-
-    $id_paket =  htmlspecialchars($data["id_paket"]);
     $paket =  htmlspecialchars($data["paket"]);
     $harga_kilo =  htmlspecialchars($data["harga_kilo"]);
     $deskripsi =  htmlspecialchars($data["deskripsi"]);

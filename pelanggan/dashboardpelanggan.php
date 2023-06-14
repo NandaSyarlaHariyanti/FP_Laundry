@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+
+<?php
+
+session_start();
+
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -80,7 +86,6 @@
 
     <div class="container">
         <?php
-        session_start();
         require_once('../conn.php');
 
         $username = "";
