@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-
 <?php
-
-session_start();
-
-=======
-<?php
-        session_start();
->>>>>>> ea3ad8559182a398e7e2c5fbbafcbdb0c23d2e11
+    session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -11,7 +11,7 @@ include('../conn.php');
             document.cookie = 'login=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
             // Redirect ke halaman login atau halaman lain yang sesuai
             alert('Logout Berhasil');
-            window.location.href = '../admin/loginadmin.php';
+            window.location.href = '../index.php';
         } else {
             // Batal logout
             alert('Logout Dibatalkan');
